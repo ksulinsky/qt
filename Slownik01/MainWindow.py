@@ -35,6 +35,7 @@ class Ui_MainWindow(object):
         self.btn_zaloguj.setGeometry(QtCore.QRect(560, 0, 75, 23))
         self.btn_zaloguj.setObjectName("btn_zaloguj")
         self.btn_zaloguj.clicked.connect(self.logowanie)
+        self.btn_zaloguj.clicked.connect(MainWindow.close)
 
         #zamknij--------------------------------------
         self.btn_zamknij = QtWidgets.QPushButton(self.centralwidget)
@@ -130,7 +131,7 @@ class Ui_MainWindow(object):
 
 
         if self.choice == QMessageBox.Yes:
-            sys.exit(app.exec_())
+            MainWindow.close()
 
         elif self.choice == QMessageBox.No:
             print('Kontynuuje dzialanie.')
