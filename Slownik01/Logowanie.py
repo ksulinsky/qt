@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Rejestracja import Ui_Registration
+from baza2 import Baza2
 
 
 
@@ -32,9 +33,11 @@ class Ui_Logowanie(object):
         self.clbtn_registration.clicked.connect(self.goToRegistration)
         self.clbtn_registration.clicked.connect(Logowanie.close)
 
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(260, 240, 91, 31))
-        self.pushButton.setObjectName("pushButton")
+        self.btn_logIn = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_logIn.setGeometry(QtCore.QRect(260, 240, 91, 31))
+        self.btn_logIn.setObjectName("pushButton")
+        self.btn_logIn.clicked.connect(self.logIn)
+        self.btn_logIn.clicked.connect(Logowanie.close)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(200, 80, 211, 141))
@@ -48,17 +51,17 @@ class Ui_Logowanie(object):
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
 
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.verticalLayout.addWidget(self.lineEdit_2)
+        self.lineEdit_email = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_email.setObjectName("lineEdit_email")
+        self.verticalLayout.addWidget(self.lineEdit_email)
 
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
 
-        self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.lineEdit)
+        self.lineEdit_password = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_password.setObjectName("lineEdit_password")
+        self.verticalLayout.addWidget(self.lineEdit_password)
 
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
@@ -86,7 +89,7 @@ class Ui_Logowanie(object):
         Logowanie.setWindowTitle(_translate("Logowanie", "MainWindow"))
         self.label_log.setText(_translate("Logowanie", "LOGOWANIE"))
         self.clbtn_registration.setText(_translate("Logowanie", "Nie masz konta? Zarejestruj się"))
-        self.pushButton.setText(_translate("Logowanie", "Zaloguj"))
+        self.btn_logIn.setText(_translate("Logowanie", "Zaloguj"))
         self.label.setText(_translate("Logowanie", "E-mail"))
         self.label_2.setText(_translate("Logowanie", "Hasło"))
         self.btn_back.setText(_translate("Logowanie", "Pwrót"))
@@ -99,11 +102,28 @@ class Ui_Logowanie(object):
         self.ui.setupUi(self.window1)
         self.window1.show()
     def goBack(self):
-        from MainWindow import Ui_MainWindow
-        self.ui1 = Ui_MainWindow()
+
+        from UserMainWindow import Ui_UserMainWindow
+        self.ui1 = Ui_UserMainWindow()
+
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
         self.window2.show()
+
+    def logIn(self):
+        baza = Baza2()
+        logged = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
+
+        if (logged==1):
+            from UserMainWindow import Ui_UserMainWindow
+            self.ui1 = Ui_UserMainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
+
+        else:
+            print("niezalogowano")
+            self.goBack()
 
 if __name__ == "__main__":
     import sys

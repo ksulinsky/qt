@@ -5,9 +5,11 @@ import sys
 
 
 pojecie = None
+tresc =None
+click=1
 
 class Ui_ShowDefinition(object):
-    global pojecie
+    global pojecie, tresc,click
 
     def setupUi(self, ShowDefinition):
         ShowDefinition.setObjectName("ShowDefinition")
@@ -26,7 +28,8 @@ class Ui_ShowDefinition(object):
         self.btn_back.setObjectName("pushButton")
 
 
-        self.definicja = QtWidgets.QLineEdit(self.centralwidget)
+        self.definicja = QtWidgets.QLineEdit(ShowDefinition)
+        self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
         # self.textBrowser.setObjectName("textBrowser")
         #layout.addWidget(self.textBrowser)
@@ -58,11 +61,19 @@ class Ui_ShowDefinition(object):
         self.btn_back.setText(_translate("ShowDefinition", "Pwrót"))
 
     def goBack(self):
-        from MainWindow import Ui_MainWindow
-        self.ui1 = Ui_MainWindow()
-        self.window2 = QtWidgets.QMainWindow()
-        self.ui1.setupUi(self.window2)
-        self.window2.show()
+        if(self.click==1):
+            from UserMainWindow import Ui_UserMainWindow
+            self.ui1 = Ui_UserMainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
+        else:
+            from MainWindow import Ui_MainWindow
+            self.ui1 = Ui_MainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
+
 
 
 if __name__ == "__main__":

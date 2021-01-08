@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from baza2 import Baza2
 
 
 class Ui_Registration(object):
@@ -51,9 +52,12 @@ class Ui_Registration(object):
         self.lineEdit_confirmPassword.setObjectName("lineEdit_confirmPassword")
         self.verticalLayout.addWidget(self.lineEdit_confirmPassword)
 
+        # ----stworz-------------------
         self.btn_regist = QtWidgets.QPushButton(self.centralwidget)
         self.btn_regist.setGeometry(QtCore.QRect(260, 260, 101, 21))
         self.btn_regist.setObjectName("btn_regist")
+        self.btn_regist.clicked.connect(self.signUp)
+        self.btn_regist.clicked.connect(Registration.close)
 
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
@@ -91,6 +95,10 @@ class Ui_Registration(object):
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
         self.window2.show()
+    def signUp(self):
+        baza = Baza2()
+        baza.zarejestruj(self.lineEdit_confirmPassword.text(), self.lineEdit_password.text(), self.lineEdit_email.text())
+
 
 if __name__ == "__main__":
     import sys

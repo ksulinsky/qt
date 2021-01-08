@@ -3,15 +3,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Definicja import Ui_ShowDefinition
 from Logowanie import Ui_Logowanie
+from DodawaniePojecia import Ui_Dodawanie
 from baza2 import Baza2
 
-class Ui_MainWindow(object):
+
+class Ui_UserMainWindow(object):
 
 
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(639, 477)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, UserMainWindow):
+        click=0
+        UserMainWindow.setObjectName("UserMainWindow")
+        UserMainWindow.resize(639, 477)
+        self.centralwidget = QtWidgets.QWidget(UserMainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
         self.showDef = Ui_ShowDefinition()
@@ -35,7 +38,7 @@ class Ui_MainWindow(object):
         self.btn_zaloguj.setGeometry(QtCore.QRect(560, 0, 75, 23))
         self.btn_zaloguj.setObjectName("btn_zaloguj")
         self.btn_zaloguj.clicked.connect(self.logowanie)
-        self.btn_zaloguj.clicked.connect(MainWindow.close)
+        self.btn_zaloguj.clicked.connect(UserMainWindow.close)
 
         #zamknij--------------------------------------
         self.btn_zamknij = QtWidgets.QPushButton(self.centralwidget)
@@ -67,7 +70,7 @@ class Ui_MainWindow(object):
         self.btn_szukaj = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.btn_szukaj.setObjectName("btn_szukaj")
         self.btn_szukaj.clicked.connect(self.passingInformation)
-        self.btn_szukaj.clicked.connect(MainWindow.close)
+        self.btn_szukaj.clicked.connect(UserMainWindow.close)
 
         self.horizontalLayout.addWidget(self.btn_szukaj)
 
@@ -83,37 +86,44 @@ class Ui_MainWindow(object):
         self.btn_losuj.setObjectName("btn_losuj")
         self.verticalLayout.addWidget(self.btn_losuj)
         self.btn_losuj.clicked.connect(self.losowanie)
-        self.btn_losuj.clicked.connect(MainWindow.close)
+        self.btn_losuj.clicked.connect(UserMainWindow.close)
 
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
         self.comboBox.setObjectName("comboBox")
         self.verticalLayout.addWidget(self.comboBox)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        # -----dodaj pojecie do bazy-----------
+        self.btn_add = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.btn_add.setObjectName("btn_add")
+        self.verticalLayout.addWidget(self.btn_add)
+        self.btn_add.clicked.connect(self.add)
+        self.btn_add.clicked.connect(UserMainWindow.close)
+
+        UserMainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(UserMainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 639, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        UserMainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(UserMainWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        UserMainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(UserMainWindow)
+        QtCore.QMetaObject.connectSlotsByName(UserMainWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, UserMainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        UserMainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label1.setText(_translate("MainWindow", "Python - Słownik"))
-        self.btn_zaloguj.setText(_translate("MainWindow", "Zaloguj"))
+        self.btn_zaloguj.setText(_translate("MainWindow", "Wyloguj"))
         self.btn_zamknij.setText(_translate("MainWindow", "Zamknij"))
         self.label_2.setText(_translate("MainWindow", "Wyszukaj pojęcie: "))
         self.btn_szukaj.setText(_translate("MainWindow", "Szukaj"))
         self.btn_losuj.setText(_translate("MainWindow", "Losuj pojęcie"))
+        self.btn_add.setText(_translate("MainWindow", "Dodaj pojęcie"))
 
 
     def logowanie(self):
-
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Logowanie()
         self.ui.setupUi(self.window)
@@ -126,7 +136,7 @@ class Ui_MainWindow(object):
         baza = Baza2()
         self.trescTemp = baza.get_tresc(self.ui.pojecie)
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click = 0
+        self.ui.click = 1
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
@@ -140,12 +150,17 @@ class Ui_MainWindow(object):
 
         self.ui.pojecie = self.string1
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click =0
-
+        self.ui.click = 1 #zaznaczam ze losowanie w userze kliknieto zeby wrocic do panelu usera
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
         self.window1.show()
+
+    def add(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dodawanie()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
 
 
@@ -155,7 +170,7 @@ class Ui_MainWindow(object):
 
 
         if self.choice == QMessageBox.Yes:
-            MainWindow.close()
+            UserMainWindow.close()
 
         elif self.choice == QMessageBox.No:
             print('Kontynuuje dzialanie.')
@@ -163,8 +178,8 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    UserMainWindow = QtWidgets.QMainWindow()
+    ui = Ui_UserMainWindow()
+    ui.setupUi(UserMainWindow)
+    UserMainWindow.show()
     sys.exit(app.exec_())
