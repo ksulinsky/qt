@@ -13,12 +13,14 @@ class Ui_Logowanie(object):
         self.centralwidget.setObjectName("centralwidget")
 
         self.label_log = QtWidgets.QLabel(self.centralwidget)
-        self.label_log.setGeometry(QtCore.QRect(270, 20, 81, 41))
+        self.label_log.setGeometry(QtCore.QRect(216, 20, 201, 41))
         self.label_log.setBaseSize(QtCore.QSize(10, 10))
         font = QtGui.QFont()
+        font.setFamily("Lucida Fax")
+        font.setPointSize(18)
         font.setBold(True)
         font.setItalic(False)
-        font.setUnderline(True)
+        # font.setUnderline(True)
         font.setWeight(75)
 
 
@@ -36,6 +38,16 @@ class Ui_Logowanie(object):
         self.btn_logIn = QtWidgets.QPushButton(self.centralwidget)
         self.btn_logIn.setGeometry(QtCore.QRect(260, 240, 91, 31))
         self.btn_logIn.setObjectName("pushButton")
+        self.btn_logIn.setStyleSheet("QPushButton"
+                             "{"
+                             "background-color : green;"
+                             "color : white;"
+                              "border-radius: 10px;"
+                             "}"
+                             "QPushButton::pressed"
+                             "{"
+                             "background-color : lightgreen;"
+                             "}")
         self.btn_logIn.clicked.connect(self.logIn)
         self.btn_logIn.clicked.connect(Logowanie.close)
 
@@ -66,6 +78,16 @@ class Ui_Logowanie(object):
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.btn_back.setGeometry(QtCore.QRect(560, 410, 75, 23))
+        self.btn_back.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : blue;"
+                                     "color : white;"
+                                     "border-radius: 10px;"
+                                     "}"
+                                     "QPushButton::pressed"
+                                     "{"
+                                     "background-color : lightblue;"
+                                     "}")
         self.btn_back.clicked.connect(self.goBack)
         self.btn_back.clicked.connect(Logowanie.close)
 
@@ -86,11 +108,11 @@ class Ui_Logowanie(object):
 
     def retranslateUi(self, Logowanie):
         _translate = QtCore.QCoreApplication.translate
-        Logowanie.setWindowTitle(_translate("Logowanie", "MainWindow"))
+        Logowanie.setWindowTitle(_translate("Logowanie", "Logowanie"))
         self.label_log.setText(_translate("Logowanie", "LOGOWANIE"))
         self.clbtn_registration.setText(_translate("Logowanie", "Nie masz konta? Zarejestruj się"))
         self.btn_logIn.setText(_translate("Logowanie", "Zaloguj"))
-        self.label.setText(_translate("Logowanie", "E-mail"))
+        self.label.setText(_translate("Logowanie", "Login"))
         self.label_2.setText(_translate("Logowanie", "Hasło"))
         self.btn_back.setText(_translate("Logowanie", "Pwrót"))
 

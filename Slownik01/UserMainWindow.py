@@ -23,7 +23,9 @@ class Ui_UserMainWindow(object):
         self.label1.setGeometry(200, 0, 240, 70)
         self.label1.setBaseSize(QtCore.QSize(10, 10))
 
-        font = QtGui.QFont("Cascada Code PL", 20)
+        font = QtGui.QFont()
+        font.setFamily("Lucida Fax")
+        font.setPointSize(20)
         font.setBold(True)
         font.setItalic(False)
         font.setUnderline(True)
@@ -39,18 +41,19 @@ class Ui_UserMainWindow(object):
         self.btn_zaloguj.setObjectName("btn_zaloguj")
         self.btn_zaloguj.clicked.connect(self.logowanie)
         self.btn_zaloguj.clicked.connect(UserMainWindow.close)
-
-        #zamknij--------------------------------------
-        self.btn_zamknij = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_zamknij.setGeometry(QtCore.QRect(560, 410, 75, 23))
-        self.btn_zamknij.setObjectName("btn_zamknij")
-        self.btn_zamknij.clicked.connect(self.zamknij)
+        self.btn_zaloguj.setStyleSheet("QPushButton"
+                                      "{"
+                                      "background-color : black;"
+                                      "border-radius: 10px;"
+                                      "color : white;"
+                                      "}"
+                                      )
 
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 140, 521, 121))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 140, 400, 140))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setContentsMargins(0, 0, 10, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_2 = QtWidgets.QLabel(self.horizontalLayoutWidget)
         font = QtGui.QFont()
@@ -67,12 +70,20 @@ class Ui_UserMainWindow(object):
         self.horizontalLayout.addWidget(self.lineEdit_pojecie)
 
         #szukaj------------------------------------------
-        self.btn_szukaj = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.btn_szukaj.setObjectName("btn_szukaj")
+        self.btn_szukaj = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_szukaj.setGeometry(QtCore.QRect(418, 199, 75, 23))
+
+        self.btn_szukaj.setStyleSheet("QPushButton"
+                                      "{"
+                                      "background-color : '#FBA40A';"
+                                      "border-radius: 10px;"
+                                      "color : white;"
+                                      "}"
+                                      )
         self.btn_szukaj.clicked.connect(self.passingInformation)
         self.btn_szukaj.clicked.connect(UserMainWindow.close)
-
-        self.horizontalLayout.addWidget(self.btn_szukaj)
+        self.btn_szukaj.setObjectName("QPushButton")
+        # self.horizontalLayout.addWidget(self.btn_szukaj)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 280, 241, 131))
@@ -84,6 +95,13 @@ class Ui_UserMainWindow(object):
         # -----losowanie-----------
         self.btn_losuj = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.btn_losuj.setObjectName("btn_losuj")
+        self.btn_losuj.setStyleSheet("QPushButton"
+                                      "{"
+                                      "background-color : '#66CC66';"
+                                      # "border-radius: 10px;"'#F6D542'
+                                      "color : black;"
+                                      "}"
+                                      )
         self.verticalLayout.addWidget(self.btn_losuj)
         self.btn_losuj.clicked.connect(self.losowanie)
         self.btn_losuj.clicked.connect(UserMainWindow.close)
@@ -95,6 +113,13 @@ class Ui_UserMainWindow(object):
         # -----dodaj pojecie do bazy-----------
         self.btn_add = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.btn_add.setObjectName("btn_add")
+        self.btn_add.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : '#66CC33';"
+                                     # "border-radius: 10px;"'#F6D542'
+                                     "color : black;"
+                                     "}"
+                                     )
         self.verticalLayout.addWidget(self.btn_add)
         self.btn_add.clicked.connect(self.add)
         self.btn_add.clicked.connect(UserMainWindow.close)
@@ -113,14 +138,13 @@ class Ui_UserMainWindow(object):
 
     def retranslateUi(self, UserMainWindow):
         _translate = QtCore.QCoreApplication.translate
-        UserMainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label1.setText(_translate("MainWindow", "Python - Słownik"))
-        self.btn_zaloguj.setText(_translate("MainWindow", "Wyloguj"))
-        self.btn_zamknij.setText(_translate("MainWindow", "Zamknij"))
-        self.label_2.setText(_translate("MainWindow", "Wyszukaj pojęcie: "))
-        self.btn_szukaj.setText(_translate("MainWindow", "Szukaj"))
-        self.btn_losuj.setText(_translate("MainWindow", "Losuj pojęcie"))
-        self.btn_add.setText(_translate("MainWindow", "Dodaj pojęcie"))
+        UserMainWindow.setWindowTitle(_translate("UserMainWindow", "Panel Użytkownika"))
+        self.label1.setText(_translate("UserMainWindow", "Python - Słownik"))
+        self.btn_zaloguj.setText(_translate("UserMainWindow", "Wyloguj"))
+        self.label_2.setText(_translate("UserMainWindow", "Wyszukaj pojęcie: "))
+        self.btn_szukaj.setText(_translate("UserMainWindow", "Szukaj"))
+        self.btn_losuj.setText(_translate("UserMainWindow", "Losuj pojęcie"))
+        self.btn_add.setText(_translate("UserMainWindow", "Dodaj pojęcie"))
 
 
     def logowanie(self):
@@ -170,7 +194,7 @@ class Ui_UserMainWindow(object):
 
 
         if self.choice == QMessageBox.Yes:
-            UserMainWindow.close()
+            self.logowanie()
 
         elif self.choice == QMessageBox.No:
             print('Kontynuuje dzialanie.')

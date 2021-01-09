@@ -10,12 +10,14 @@ class Ui_Registration(object):
         self.centralwidget.setObjectName("centralwidget")
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(260, 20, 111, 31))
+        self.label.setGeometry(QtCore.QRect(229, 20, 201, 41))
 
         font = QtGui.QFont()
+        font.setFamily("Lucida Fax")
+        font.setPointSize(14)
         font.setBold(True)
         font.setItalic(False)
-        font.setUnderline(True)
+        # font.setUnderline(True)
         font.setWeight(75)
 
         self.label.setFont(font)
@@ -54,14 +56,34 @@ class Ui_Registration(object):
 
         # ----stworz-------------------
         self.btn_regist = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_regist.setGeometry(QtCore.QRect(260, 260, 101, 21))
+        self.btn_regist.setGeometry(QtCore.QRect(260, 260, 101, 31))
         self.btn_regist.setObjectName("btn_regist")
+        self.btn_regist.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : green;"
+                                     "color : white;"
+                                     "border-radius: 10px;"
+                                     "}"
+                                     "QPushButton::pressed"
+                                     "{"
+                                     "background-color : lightgreen;"
+                                     "}")
         self.btn_regist.clicked.connect(self.signUp)
         self.btn_regist.clicked.connect(Registration.close)
 
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.btn_back.setGeometry(QtCore.QRect(560, 410, 75, 23))
+        self.btn_back.setStyleSheet("QPushButton"
+                                    "{"
+                                    "background-color : blue;"
+                                    "color : white;"
+                                    "border-radius: 10px;"
+                                    "}"
+                                    "QPushButton::pressed"
+                                    "{"
+                                    "background-color : lightblue;"
+                                    "}")
         self.btn_back.clicked.connect(self.goBack)
         self.btn_back.clicked.connect(Registration.close)
 

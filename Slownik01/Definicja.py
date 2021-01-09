@@ -22,6 +22,16 @@ class Ui_ShowDefinition(object):
         #powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.btn_back.setGeometry(QtCore.QRect(560, 410, 75, 23))
+        self.btn_back.setStyleSheet("QPushButton"
+                                    "{"
+                                    "background-color : blue;"
+                                    "color : white;"
+                                    "border-radius: 10px;"
+                                    "}"
+                                    "QPushButton::pressed"
+                                    "{"
+                                    "background-color : lightblue;"
+                                    "}")
         self.btn_back.clicked.connect(self.goBack)
         self.btn_back.clicked.connect(ShowDefinition.close)
 

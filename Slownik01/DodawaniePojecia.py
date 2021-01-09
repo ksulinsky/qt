@@ -20,6 +20,16 @@ class Ui_Dodawanie(object):
         self.btn_add = QtWidgets.QPushButton(self.centralwidget)
         self.btn_add.setGeometry(QtCore.QRect(70, 350, 111, 31))
         self.btn_add.setObjectName("pushButton")
+        self.btn_add.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : green;"
+                                     "color : white;"
+                                     "border-radius: 10px;"
+                                     "}"
+                                     "QPushButton::pressed"
+                                     "{"
+                                     "background-color : lightgreen;"
+                                     "}")
         self.btn_add.clicked.connect(self.add)
         self.btn_add.clicked.connect(Dodawanie.close)
 
@@ -37,6 +47,16 @@ class Ui_Dodawanie(object):
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.btn_back.setGeometry(QtCore.QRect(540, 400, 75, 23))
         self.btn_back.setObjectName("pushButton_2")
+        self.btn_back.setStyleSheet("QPushButton"
+                                    "{"
+                                    "background-color : blue;"
+                                    "color : white;"
+                                    "border-radius: 10px;"
+                                    "}"
+                                    "QPushButton::pressed"
+                                    "{"
+                                    "background-color : lightblue;"
+                                    "}")
         self.btn_back.clicked.connect(self.goBack)
         self.btn_back.clicked.connect(Dodawanie.close)
 

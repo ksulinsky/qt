@@ -34,17 +34,22 @@ class Ui_MainWindow(object):
         self.btn_zaloguj = QtWidgets.QPushButton(self.centralwidget)
         self.btn_zaloguj.setGeometry(QtCore.QRect(560, 0, 75, 23))
         self.btn_zaloguj.setObjectName("btn_zaloguj")
+        self.btn_zaloguj.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : green;"
+                                     "color : white;"
+                                     "border-radius: 10px;"
+                                     "}"
+                                     "QPushButton::pressed"
+                                     "{"
+                                     "background-color : lightgreen;"
+                                     "}")
         self.btn_zaloguj.clicked.connect(self.logowanie)
         self.btn_zaloguj.clicked.connect(MainWindow.close)
 
-        #zamknij--------------------------------------
-        self.btn_zamknij = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_zamknij.setGeometry(QtCore.QRect(560, 410, 75, 23))
-        self.btn_zamknij.setObjectName("btn_zamknij")
-        self.btn_zamknij.clicked.connect(self.zamknij)
 
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 140, 521, 121))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 140, 400, 140))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -64,12 +69,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.lineEdit_pojecie)
 
         #szukaj------------------------------------------
-        self.btn_szukaj = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.btn_szukaj = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_szukaj.setGeometry(QtCore.QRect(418, 199, 75, 23))
         self.btn_szukaj.setObjectName("btn_szukaj")
+        self.btn_szukaj.setStyleSheet("QPushButton"
+                                      "{"
+                                      "background-color : '#FBA40A';"
+                                      "border-radius: 10px;"
+                                      "color : white;"
+                                      "}"
+                                      )
         self.btn_szukaj.clicked.connect(self.passingInformation)
         self.btn_szukaj.clicked.connect(MainWindow.close)
 
-        self.horizontalLayout.addWidget(self.btn_szukaj)
+        # self.horizontalLayout.addWidget(self.btn_szukaj)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 280, 241, 131))
@@ -81,6 +94,13 @@ class Ui_MainWindow(object):
         # -----losowanie-----------
         self.btn_losuj = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.btn_losuj.setObjectName("btn_losuj")
+        self.btn_losuj.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : '#66CC66';"
+                                     # "border-radius: 10px;"'#F6D542'
+                                     "color : black;"
+                                     "}"
+                                     )
         self.verticalLayout.addWidget(self.btn_losuj)
         self.btn_losuj.clicked.connect(self.losowanie)
         self.btn_losuj.clicked.connect(MainWindow.close)
@@ -106,7 +126,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label1.setText(_translate("MainWindow", "Python - Słownik"))
         self.btn_zaloguj.setText(_translate("MainWindow", "Zaloguj"))
-        self.btn_zamknij.setText(_translate("MainWindow", "Zamknij"))
         self.label_2.setText(_translate("MainWindow", "Wyszukaj pojęcie: "))
         self.btn_szukaj.setText(_translate("MainWindow", "Szukaj"))
         self.btn_losuj.setText(_translate("MainWindow", "Losuj pojęcie"))
