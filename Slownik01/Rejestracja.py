@@ -107,7 +107,7 @@ class Ui_Registration(object):
         self.label.setText(_translate("Registration", "STWÓRZ KONTO"))
         self.label_2.setText(_translate("Registration", "E-mail"))
         self.label_3.setText(_translate("Registration", "Hasło"))
-        self.label_4.setText(_translate("Registration", "Powtórz hasło"))
+        self.label_4.setText(_translate("Registration", "Wybierz login"))
         self.btn_regist.setText(_translate("Registration", "Stwórz"))
         self.btn_back.setText(_translate("Registration", "Pwrót"))
 

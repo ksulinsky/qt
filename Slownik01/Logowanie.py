@@ -1,3 +1,4 @@
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Rejestracja import Ui_Registration
 from baza2 import Baza2
@@ -13,7 +14,7 @@ class Ui_Logowanie(object):
         self.centralwidget.setObjectName("centralwidget")
 
         self.label_log = QtWidgets.QLabel(self.centralwidget)
-        self.label_log.setGeometry(QtCore.QRect(216, 20, 201, 41))
+        self.label_log.setGeometry(QtCore.QRect(229, 20, 201, 41))
         self.label_log.setBaseSize(QtCore.QSize(10, 10))
         font = QtGui.QFont()
         font.setFamily("Lucida Fax")
@@ -49,7 +50,7 @@ class Ui_Logowanie(object):
                              "background-color : lightgreen;"
                              "}")
         self.btn_logIn.clicked.connect(self.logIn)
-        self.btn_logIn.clicked.connect(Logowanie.close)
+
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(200, 80, 211, 141))
@@ -73,6 +74,7 @@ class Ui_Logowanie(object):
 
         self.lineEdit_password = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_password.setObjectName("lineEdit_password")
+        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.verticalLayout.addWidget(self.lineEdit_password)
 
         # powrót--------------------------------------------------------
@@ -131,24 +133,47 @@ class Ui_Logowanie(object):
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
         self.window2.show()
+    def mesBox(self):
+        self.mess = QtWidgets.QMessageBox()
+        self.mess.setWindowTitle("Błąd")
+        self.mess.setText("Nie zalogowano")
+        self.mess.setStyleSheet(
+                                "QPushButton"
+                                "{"
+                                "background-color : red;"
+                                "color : white;"
+                                "}"
+                                "QMessageBox"
+                                "{"
+                                "color : red;"
+                                "}"
+
+                                )
+        self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        self.mess.exec_()
 
     def logIn(self):
         baza = Baza2()
         logged = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
 
-        if (logged==1):
+        if (logged==1 or self.lineEdit_email.text()!=""):
             from UserMainWindow import Ui_UserMainWindow
             self.ui1 = Ui_UserMainWindow()
             self.window2 = QtWidgets.QMainWindow()
             self.ui1.setupUi(self.window2)
             self.window2.show()
+            self.btn_logIn.clicked.connect(Logowanie.close)
 
         else:
             print("niezalogowano")
-            self.goBack()
+            self.mesBox()
+
+
+
+
 
 if __name__ == "__main__":
-    import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Logowanie = QtWidgets.QMainWindow()
     ui = Ui_Logowanie()

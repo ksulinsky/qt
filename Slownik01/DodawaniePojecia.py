@@ -33,6 +33,7 @@ class Ui_Dodawanie(object):
         self.btn_add.clicked.connect(self.add)
         self.btn_add.clicked.connect(Dodawanie.close)
 
+
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(210, 10, 231, 51))
         font = QtGui.QFont()
@@ -93,11 +94,32 @@ class Ui_Dodawanie(object):
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
         self.window2.show()
+    def mesBox(self):
+        self.mess = QtWidgets.QMessageBox()
+        self.mess.setWindowTitle("Dodano")
+        self.mess.setText("Dodano do bazy")
+        self.mess.setStyleSheet(
+                                "QPushButton"
+                                "{"
+                                "background-color : green;"
+                                "color : white;"
+                                "}"
+                                "QMessageBox"
+                                "{"
+                                "color : red;"
+                                "}"
+                                )
+        self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        self.mess.exec_()
+        self.goBack()
+
     def add(self):
         baza= Baza2()
         baza.wstaw_pojecie_user(self.lineEdit_name.text(),
                                 self.lineEdit_def.text())
-        self.goBack()
+
+        self.mesBox()
+
 
 
 if __name__ == "__main__":

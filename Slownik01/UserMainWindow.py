@@ -92,6 +92,30 @@ class Ui_UserMainWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
 
+        # ---LISTA-------------
+        self.baza1 = Baza2()
+        self.lista = self.baza1.lista_pojec()
+        self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
+        self.comboBox.setObjectName("comboBox")
+        for i in self.lista:
+            self.comboBox.addItem(i)
+
+        self.verticalLayout.addWidget(self.comboBox)
+
+        # -----SZUKAJ Z LISTY-----------
+        self.btn_szukajZListy = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.btn_szukajZListy.setObjectName("btn_szukajZListy")
+        self.btn_szukajZListy.setStyleSheet("QPushButton"
+                                     "{"
+                                     "background-color : '#66CC66';"
+                                     # "border-radius: 10px;"'#F6D542'
+                                     "color : black;"
+                                     "}"
+                                     )
+        self.verticalLayout.addWidget(self.btn_szukajZListy)
+        self.btn_szukajZListy.clicked.connect(self.szukajZListy)
+        self.btn_szukajZListy.clicked.connect(UserMainWindow.close)
+
         # -----losowanie-----------
         self.btn_losuj = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.btn_losuj.setObjectName("btn_losuj")
@@ -106,9 +130,7 @@ class Ui_UserMainWindow(object):
         self.btn_losuj.clicked.connect(self.losowanie)
         self.btn_losuj.clicked.connect(UserMainWindow.close)
 
-        self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
-        self.comboBox.setObjectName("comboBox")
-        self.verticalLayout.addWidget(self.comboBox)
+
 
         # -----dodaj pojecie do bazy-----------
         self.btn_add = QtWidgets.QPushButton(self.verticalLayoutWidget)
@@ -144,8 +166,22 @@ class Ui_UserMainWindow(object):
         self.label_2.setText(_translate("UserMainWindow", "Wyszukaj pojęcie: "))
         self.btn_szukaj.setText(_translate("UserMainWindow", "Szukaj"))
         self.btn_losuj.setText(_translate("UserMainWindow", "Losuj pojęcie"))
+        self.btn_szukajZListy.setText(_translate("UserMainWindow", "Szukaj z listy"))
         self.btn_add.setText(_translate("UserMainWindow", "Dodaj pojęcie"))
 
+
+    def szukajZListy(self):
+        self.ui = Ui_ShowDefinition()
+        self.ui.pojecie = self.comboBox.currentText()
+
+        baza = Baza2()
+        self.trescTemp = baza.get_tresc(self.ui.pojecie)
+        self.ui.tresc = self.trescTemp[0]
+        self.ui.click = 1
+
+        self.window1 = QtWidgets.QMainWindow()
+        self.ui.setupUi(self.window1)
+        self.window1.show()
 
     def logowanie(self):
         self.window = QtWidgets.QMainWindow()
