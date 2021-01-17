@@ -1,14 +1,12 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox, QListWidget, QLineEdit
 from Definicja import Ui_ShowDefinition
 from Logowanie import Ui_Logowanie
 from DodawaniePojecia import Ui_Dodawanie
 from baza2 import Baza2
 
-
 class Ui_AdminMainWindow(object):
-
 
     def setupUi(self, AdminMainWindow):
         click=0
@@ -94,6 +92,9 @@ class Ui_AdminMainWindow(object):
 
         # ---LISTA-------------
         self.baza1 = Baza2()
+
+
+
         self.lista = self.baza1.lista_pojec()
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
         self.comboBox.setObjectName("comboBox")
@@ -157,22 +158,26 @@ class Ui_AdminMainWindow(object):
                                    "}"
                                    )
         self.verticalLayout.addWidget(self.btn_accept)
-        self.btn_accept.clicked.connect(self.add)
-        self.btn_accept.clicked.connect(AdminMainWindow.close)
+        self.btn_accept.clicked.connect(self.showAccept)
+        # self.btn_accept.clicked.connect(AdminMainWindow.close)
 
-        # -----------wyswietl wszystkie pojecia z bazy --------
-        self.btn_showAll = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.btn_showAll.setObjectName("btn_showAll")
-        self.btn_showAll.setStyleSheet("QPushButton"
-                                      "{"
-                                      "background-color : '#66CC33';"
-                                      # "border-radius: 10px;"'#F6D542'
-                                      "color : black;"
-                                      "}"
-                                      )
-        self.verticalLayout.addWidget(self.btn_showAll)
-        self.btn_showAll.clicked.connect(self.add)
-        self.btn_showAll.clicked.connect(AdminMainWindow.close)
+
+
+
+
+        # # -----------wyswietl wszystkie pojecia z bazy --------
+        # self.btn_showAll = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        # self.btn_showAll.setObjectName("btn_showAll")
+        # self.btn_showAll.setStyleSheet("QPushButton"
+        #                               "{"
+        #                               "background-color : '#66CC33';"
+        #                               # "border-radius: 10px;"'#F6D542'
+        #                               "color : black;"
+        #                               "}"
+        #                               )
+        # self.verticalLayout.addWidget(self.btn_showAll)
+        # self.btn_showAll.clicked.connect(self.add)
+        # self.btn_showAll.clicked.connect(AdminMainWindow.close)
 
         AdminMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(AdminMainWindow)
@@ -188,7 +193,7 @@ class Ui_AdminMainWindow(object):
 
     def retranslateUi(self, AdminMainWindow):
         _translate = QtCore.QCoreApplication.translate
-        AdminMainWindow.setWindowTitle(_translate("AdminMainWindow", "Panel Użytkownika"))
+        AdminMainWindow.setWindowTitle(_translate("AdminMainWindow", "Panel Administratora"))
         self.label1.setText(_translate("AdminMainWindow", "Python - Słownik"))
         self.btn_zaloguj.setText(_translate("AdminMainWindow", "Wyloguj"))
         self.label_2.setText(_translate("AdminMainWindow", "Wyszukaj pojęcie: "))
@@ -197,8 +202,17 @@ class Ui_AdminMainWindow(object):
         self.btn_szukajZListy.setText(_translate("AdminMainWindow", "Szukaj z listy"))
         self.btn_add.setText(_translate("AdminMainWindow", "Dodaj pojęcie"))
         self.btn_accept.setText(_translate("AdminMainWindow", "Pojęcia do akceptacji"))
-        self.btn_showAll.setText(_translate("AdminMainWindow", "Wszystkie pojęcia"))
+        # self.btn_showAll.setText(_translate("AdminMainWindow", "Wszystkie pojęcia"))
+        # self.lista2.setWindowTitle(_translate("AdminMainWindow", "Wszystkie pojęcia"))
 
+    def showAccept(self):
+
+        self.lista2 = QListWidget()
+        self.fields = self.baza1.wyswietl_akceptacja()
+        for i in self.fields:
+            self.lista2.addItem(str(i))
+
+        self.lista2.show()
 
     def szukajZListy(self):
         self.ui = Ui_ShowDefinition()
@@ -207,7 +221,7 @@ class Ui_AdminMainWindow(object):
         baza = Baza2()
         self.trescTemp = baza.get_tresc(self.ui.pojecie)
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click = 1
+        self.ui.click = 2
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
@@ -226,7 +240,7 @@ class Ui_AdminMainWindow(object):
         baza = Baza2()
         self.trescTemp = baza.get_tresc(self.ui.pojecie)
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click = 1
+        self.ui.click = 2
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
@@ -240,7 +254,7 @@ class Ui_AdminMainWindow(object):
 
         self.ui.pojecie = self.string1
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click = 1 #zaznaczam ze losowanie w userze kliknieto zeby wrocic do panelu usera
+        self.ui.click = 2 #zaznaczam ze losowanie w userze kliknieto zeby wrocic do panelu usera
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
@@ -250,20 +264,8 @@ class Ui_AdminMainWindow(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dodawanie()
         self.ui.setupUi(self.window)
+        self.ui.click1 = 2
         self.window.show()
-
-
-
-    def zamknij(self):
-        self.choice = QMessageBox.Question(self,'Czy chcesz wyjść z aplikacji?',
-                                      QMessageBox.Yes | QMessageBox.No)
-
-
-        if self.choice == QMessageBox.Yes:
-            self.logowanie()
-
-        elif self.choice == QMessageBox.No:
-            print('Kontynuuje dzialanie.')
 
 
 if __name__ == "__main__":

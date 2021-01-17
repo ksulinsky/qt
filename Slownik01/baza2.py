@@ -121,9 +121,9 @@ class Baza2:
                 database="slownik"
             )
             cur = db.cursor(dictionary=True)
-            query = "select id from akceptacja"
+            query = "select tytul from akceptacja"
             cur.execute(query)
-            fields = [x['id'] for x in cur.fetchall()]
+            fields = [x['tytul'] for x in cur.fetchall()]
             if not fields:
                 return 0
             return fields

@@ -1,8 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from baza2 import Baza2
-
+click1=1
 class Ui_Dodawanie(object):
     def setupUi(self, Dodawanie):
+        global click1
         Dodawanie.setObjectName("MainWindow")
         Dodawanie.resize(640, 480)
         self.centralwidget = QtWidgets.QWidget(Dodawanie)
@@ -89,11 +90,19 @@ class Ui_Dodawanie(object):
         self.label_3.setText(_translate("Dodawanie", "Definicja:"))
 
     def goBack(self):
-        from UserMainWindow import Ui_UserMainWindow
-        self.ui1 = Ui_UserMainWindow()
-        self.window2 = QtWidgets.QMainWindow()
-        self.ui1.setupUi(self.window2)
-        self.window2.show()
+        if (self.click1 == 2):
+            from AdminMainWindow import Ui_AdminMainWindow
+            self.ui1 = Ui_AdminMainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
+        else:
+            from UserMainWindow import Ui_UserMainWindow
+            self.ui1 = Ui_UserMainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
+
     def mesBox(self):
         self.mess = QtWidgets.QMessageBox()
         self.mess.setWindowTitle("Dodano")

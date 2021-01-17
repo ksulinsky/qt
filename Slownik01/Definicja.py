@@ -77,6 +77,12 @@ class Ui_ShowDefinition(object):
             self.window2 = QtWidgets.QMainWindow()
             self.ui1.setupUi(self.window2)
             self.window2.show()
+        elif(self.click==2):
+            from AdminMainWindow import Ui_AdminMainWindow
+            self.ui1 = Ui_AdminMainWindow()
+            self.window2 = QtWidgets.QMainWindow()
+            self.ui1.setupUi(self.window2)
+            self.window2.show()
         else:
             from MainWindow import Ui_MainWindow
             self.ui1 = Ui_MainWindow()

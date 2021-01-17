@@ -220,6 +220,7 @@ class Ui_UserMainWindow(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dodawanie()
         self.ui.setupUi(self.window)
+        self.ui.click1=1
         self.window.show()
 
 

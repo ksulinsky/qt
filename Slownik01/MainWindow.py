@@ -162,7 +162,7 @@ class Ui_MainWindow(object):
         baza = Baza2()
         self.trescTemp = baza.get_tresc(self.ui.pojecie)
         self.ui.tresc = self.trescTemp[0]
-        self.ui.click = 1
+        self.ui.click = 0
 
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
