@@ -2,21 +2,19 @@ import mysql.connector
 import hashlib
 class Baza2:
 
-        def get_tresc(self,nazwa):
-            db = mysql.connector.connect(
+        def __init__(self):
+            self.db = mysql.connector.connect(
                 host="localhost",
                 user="root",
                 passwd="",
                 database="slownik"
             )
-            cur = db.cursor(dictionary=True)
-            cur2 = db.cursor()
-
+            self.cur=self.db.cursor(dictionary=True)
+        def get_tresc(self,nazwa):
             query = "select tresc from pojecia where tytul=%s"
-            cur = db.cursor(dictionary=True)
-            cur.execute(query,(nazwa,))
+            self.cur.execute(query,(nazwa,))
 
-            fields = [x['tresc'] for x in cur.fetchall()]
+            fields = [x['tresc'] for x in self.cur.fetchall()]
             if not fields:
                 tablica = []
                 tablica.append("brak")
@@ -25,134 +23,107 @@ class Baza2:
             else:
                 return fields
 
+        def get_tresc_akceptacja(self, nazwa):
+            query = "select tresc from akceptacja where tytul=%s"
+            self.cur.execute(query, (nazwa,))
+
+            fields = [x['tresc'] for x in self.cur.fetchall()]
+            if not fields:
+                tablica = []
+                tablica.append("brak")
+                return tablica
+            else:
+                return fields
+
+
+
         def losowe_pojecie(self):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
             query="select * from pojecia order by rand() limit 1"
-            cur.execute(query)
-            tytul = [x['tytul'] for x in cur.fetchall()]
-            cur.execute(query)
-            tresc=  [y['tresc'] for y in cur.fetchall()]
+            self.cur.execute(query)
+            tytul = [x['tytul'] for x in self.cur.fetchall()]
+            self.cur.execute(query)
+            tresc=  [y['tresc'] for y in self.cur.fetchall()]
             return tytul[0], tresc[0]
 
         def lista_pojec(self):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
+
             query = "select * from pojecia order by tytul"
-            cur.execute(query)
-            tytul = [x['tytul'] for x in cur.fetchall()]
+            self.cur.execute(query)
+            tytul = [x['tytul'] for x in self.cur.fetchall()]
             return tytul
 
         def wstaw_pojecie_user(self,title,content):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
+
+            self.cur = db.cursor(dictionary=True)
             query = "insert into akceptacja (id,tytul,tresc) values (NULL,%s,%s)"
-            cur.execute(query, (title,content,))
-            db.commit()
+            self.cur.execute(query, (title,content,))
+            self.db.commit()
+            return
+
+        def wstaw_pojecie_admin(self, title, content):
+
+            self.cur = db.cursor(dictionary=True)
+            query = "insert into pojecia (id,tytul,tresc) values (NULL,%s,%s)"
+            self.cur.execute(query, (title, content,))
+            self.db.commit()
             return
 
         def usun_pojecie_admin(self,title):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
+
             query = "delete from pojecia where tytul=%s"
-            cur.execute(query, (title,))
-            db.commit()
+            self.cur.execute(query, (title,))
+            self.db.commit()
             return
 
         def zaloguj(self,logen,haselko):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
-            query = "select haslo from uzytkownicy where nazwa=%s"
-            cur.execute(query, (logen,))
-            fields = [x['haslo'] for x in cur.fetchall()]
+            self.cur = self.db.cursor(dictionary=True)
+            query = "select * from uzytkownicy where nazwa=%s"
+            self.cur.execute(query, (logen,))
+            fields = [x['haslo'] for x in self.cur.fetchall()]
+            self.cur.execute(query, (logen,))
+            fields2 = [x['uprawnienia'] for x in self.cur.fetchall()]
             if not fields:
-                return 0
+                return 0,0
             else:
                 porownanie=hashlib.md5(haselko.encode('utf-8')).hexdigest()
 
                 if porownanie==fields[0]:
-
-                    return 1
+                    return 1,fields2[0]
                 else:
-                    print("nope")
                     return 0
         def zarejestruj(self,logen,haselko,email1):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
             query = "insert into uzytkownicy(id,nazwa,haslo,uprawnienia,email) values (NULL,%s,md5(%s),1,%s)"
-            cur.execute(query,(logen,haselko,email1,))
-            db.commit()
+            self.cur.execute(query,(logen,haselko,email1,))
+            self.db.commit()
             return
         def wyswietl_akceptacja(self):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
             query = "select tytul from akceptacja"
-            cur.execute(query)
-            fields = [x['tytul'] for x in cur.fetchall()]
+            self.cur.execute(query)
+            fields = [x['tytul'] for x in self.cur.fetchall()]
             if not fields:
                 return 0
             return fields
         def decyzje_akceptacja(self,fields):
-            db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="slownik"
-            )
-            cur = db.cursor(dictionary=True)
-
+            if not fields:
+                return 0
             for x in fields:
                 query = "select * from akceptacja where id=%s"
-                cur.execute(query, (x,))
-                title = [z['tytul'] for z in cur.fetchall()]
-                cur.execute(query, (x,))
-                cont=[y['tresc'] for y in cur.fetchall()]
+                self.cur.execute(query, (x,))
+                title = [z['tytul'] for z in self.cur.fetchall()]
+                self.cur.execute(query, (x,))
+                cont=[y['tresc'] for y in self.cur.fetchall()]
                 print(title, cont)
+
+                title1 = title[0]
+                cont1 = cont[0]
                 odp=input("Czy chcesz? ")
                 if(odp=="tak"):
-                    query2="SELECT * FROM akceptacja WHERE id=%s"
-                    cur.execute(query2, (x,))
-                    query5="(insert into pojecia (id,tytul,tresc) values(NULL,%s,%s)"
-                    cur.execute(query5,(title,cont,))
+                    query5="insert into pojecia (id,tytul,tresc) values (NULL,%s,%s)"
+                    self.cur.execute(query5, (title1,cont1,))
                     query3="delete from akceptacja where id=%s"
-                    cur.execute(query3, (x,))
-                    db.commit()
+                    self.cur.execute(query3, (x,))
+                    self.db.commit()
                 elif odp=="nie":
                     query4 = "delete from akceptacja where id=%s"
-                    cur.execute(query4, (x,))
-                    db.commit()
+                    self.cur.execute(query4, (x,))
+                    self.db.commit()
