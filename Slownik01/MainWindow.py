@@ -203,19 +203,6 @@ class Ui_MainWindow(object):
         self.window1.show()
 
 
-
-    def zamknij(self):
-        self.choice = QMessageBox.Question(self,'Czy chcesz wyjść z aplikacji?',
-                                      QMessageBox.Yes | QMessageBox.No)
-
-
-        if self.choice == QMessageBox.Yes:
-            MainWindow.close()
-
-        elif self.choice == QMessageBox.No:
-            print('Kontynuuje dzialanie.')
-
-
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()

@@ -127,11 +127,12 @@ class Ui_Logowanie(object):
         self.window1.show()
     def goBack(self):
 
-        from UserMainWindow import Ui_UserMainWindow
-        self.ui1 = Ui_UserMainWindow()
+        from MainWindow import Ui_MainWindow
+        self.ui1 = Ui_MainWindow()
 
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
+
         self.window2.show()
     def mesBox(self):
         self.mess = QtWidgets.QMessageBox()
@@ -156,19 +157,18 @@ class Ui_Logowanie(object):
         baza = Baza2()
         logged = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
 
-        if (logged==1 or self.lineEdit_email.text()!=""):
+        if (logged==1 or self.lineEdit_email.text()!="" or self.lineEdit_password.text() !=""):
             from UserMainWindow import Ui_UserMainWindow
             self.ui1 = Ui_UserMainWindow()
             self.window2 = QtWidgets.QMainWindow()
             self.ui1.setupUi(self.window2)
             self.window2.show()
-            self.btn_logIn.clicked.connect(Logowanie.close)
+
+            Logowanie.close()
 
         else:
             print("niezalogowano")
             self.mesBox()
-
-
 
 
 

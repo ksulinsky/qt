@@ -17,7 +17,7 @@ class Baza2:
             fields = [x['tresc'] for x in self.cur.fetchall()]
             if not fields:
                 tablica = []
-                tablica.append("brak")
+                tablica.append("Brak pojęcia w bazie")
                 return tablica
 
             else:
@@ -30,7 +30,7 @@ class Baza2:
             fields = [x['tresc'] for x in self.cur.fetchall()]
             if not fields:
                 tablica = []
-                tablica.append("brak")
+                tablica.append("Brak")
                 return tablica
             else:
                 return fields
@@ -54,7 +54,7 @@ class Baza2:
 
         def wstaw_pojecie_user(self,title,content):
 
-            self.cur = db.cursor(dictionary=True)
+            self.cur = self.db.cursor(dictionary=True)
             query = "insert into akceptacja (id,tytul,tresc) values (NULL,%s,%s)"
             self.cur.execute(query, (title,content,))
             self.db.commit()
@@ -62,7 +62,7 @@ class Baza2:
 
         def wstaw_pojecie_admin(self, title, content):
 
-            self.cur = db.cursor(dictionary=True)
+            self.cur = self.db.cursor(dictionary=True)
             query = "insert into pojecia (id,tytul,tresc) values (NULL,%s,%s)"
             self.cur.execute(query, (title, content,))
             self.db.commit()
@@ -73,7 +73,7 @@ class Baza2:
             query = "delete from pojecia where tytul=%s"
             self.cur.execute(query, (title,))
             self.db.commit()
-            return
+
 
         def zaloguj(self,logen,haselko):
             self.cur = self.db.cursor(dictionary=True)

@@ -124,9 +124,13 @@ class Ui_Dodawanie(object):
 
     def add(self):
         baza= Baza2()
-        baza.wstaw_pojecie_user(self.lineEdit_name.text(),
-                                self.lineEdit_def.text())
+        if (self.click1 == 1):
+            baza.wstaw_pojecie_user(self.lineEdit_name.text(),
+                                    self.lineEdit_def.text())
 
+        else:
+            baza.wstaw_pojecie_admin(self.lineEdit_name.text(),
+                                    self.lineEdit_def.text())
         self.mesBox()
 
 

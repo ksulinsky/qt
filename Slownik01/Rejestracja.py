@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from baza2 import Baza2
 
 
+
 class Ui_Registration(object):
     def setupUi(self, Registration):
         Registration.setObjectName("Registration")
@@ -69,7 +70,7 @@ class Ui_Registration(object):
                                      "background-color : lightgreen;"
                                      "}")
         self.btn_regist.clicked.connect(self.signUp)
-        self.btn_regist.clicked.connect(Registration.close)
+        # self.btn_regist.clicked.connect(Registration.close)
 
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
@@ -117,9 +118,36 @@ class Ui_Registration(object):
         self.window2 = QtWidgets.QMainWindow()
         self.ui1.setupUi(self.window2)
         self.window2.show()
+
+    def mesBox(self):
+        self.mess = QtWidgets.QMessageBox()
+        self.mess.setWindowTitle("Błąd")
+        self.mess.setText("Nie zalogowano")
+        self.mess.setStyleSheet(
+                                "QPushButton"
+                                "{"
+                                "background-color : red;"
+                                "color : white;"
+                                "}"
+                                "QMessageBox"
+                                "{"
+                                "color : red;"
+                                "}"
+
+                                )
+        self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        self.mess.exec_()
+
+
     def signUp(self):
         baza = Baza2()
-        baza.zarejestruj(self.lineEdit_confirmPassword.text(), self.lineEdit_password.text(), self.lineEdit_email.text())
+        if (self.lineEdit_confirmPassword.text()!="" or self.lineEdit_email.text() != ""
+                or self.lineEdit_password.text() != ""):
+            baza.zarejestruj(self.lineEdit_confirmPassword.text(),
+                             self.lineEdit_password.text(), self.lineEdit_email.text())
+            self.goBack()
+        else:
+            self.mesBox()
 
 
 if __name__ == "__main__":

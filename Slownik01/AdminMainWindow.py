@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QMessageBox, QListWidget, QLineEdit
 from Definicja import Ui_ShowDefinition
 from Logowanie import Ui_Logowanie
 from DodawaniePojecia import Ui_Dodawanie
+from DefinicjaAdmin import Ui_ShowDefinitionAdmin
 from baza2 import Baza2
 
 class Ui_AdminMainWindow(object):
@@ -160,7 +161,7 @@ class Ui_AdminMainWindow(object):
         self.verticalLayout.addWidget(self.btn_accept)
         self.btn_accept.clicked.connect(self.showAccept)
         # self.btn_accept.clicked.connect(AdminMainWindow.close)
-
+        self.lista2 = QListWidget()
 
 
 
@@ -205,17 +206,34 @@ class Ui_AdminMainWindow(object):
         # self.btn_showAll.setText(_translate("AdminMainWindow", "Wszystkie pojęcia"))
         # self.lista2.setWindowTitle(_translate("AdminMainWindow", "Wszystkie pojęcia"))
 
+    def listaTresc(self):
+        self.item=self.lista2.currentItem()
+        print(str(self.item.text()))
+        self.defi = self.baza1.get_tresc_akceptacja(str(self.item.text()))
+        print(self.defi[0])
+
+        from Akceptacja import Ui_Akceptacja
+        self.ui = Ui_Akceptacja()
+        self.ui.pojecie = str(self.item.text())
+        self.ui.tresc = self.defi[0]
+        self.ui.click = 2
+
+        self.window1 = QtWidgets.QMainWindow()
+        self.ui.setupUi(self.window1)
+        self.window1.show()
+        
     def showAccept(self):
 
-        self.lista2 = QListWidget()
+
         self.fields = self.baza1.wyswietl_akceptacja()
         for i in self.fields:
             self.lista2.addItem(str(i))
 
         self.lista2.show()
+        self.lista2.clicked.connect(self.listaTresc)
 
     def szukajZListy(self):
-        self.ui = Ui_ShowDefinition()
+        self.ui = Ui_ShowDefinitionAdmin()
         self.ui.pojecie = self.comboBox.currentText()
 
         baza = Baza2()
@@ -234,7 +252,8 @@ class Ui_AdminMainWindow(object):
         self.window.show()
 
     def passingInformation(self):
-        self.ui = Ui_ShowDefinition()
+
+        self.ui = Ui_ShowDefinitionAdmin()
         self.ui.pojecie = self.lineEdit_pojecie.text()
 
         baza = Baza2()

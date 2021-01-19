@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Definicja import Ui_ShowDefinition
-from Logowanie import Ui_Logowanie
+
 from DodawaniePojecia import Ui_Dodawanie
 from baza2 import Baza2
 
@@ -36,12 +36,12 @@ class Ui_UserMainWindow(object):
         self.label1.setObjectName("label1")
 
         #zaloguj----------------------
-        self.btn_zaloguj = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_zaloguj.setGeometry(QtCore.QRect(560, 0, 75, 23))
-        self.btn_zaloguj.setObjectName("btn_zaloguj")
-        self.btn_zaloguj.clicked.connect(self.logowanie)
-        self.btn_zaloguj.clicked.connect(UserMainWindow.close)
-        self.btn_zaloguj.setStyleSheet("QPushButton"
+        self.btn_wyloguj = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_wyloguj.setGeometry(QtCore.QRect(560, 0, 75, 23))
+        self.btn_wyloguj.setObjectName("btn_wyloguj")
+        self.btn_wyloguj.clicked.connect(self.logowanie)
+        self.btn_wyloguj.clicked.connect(UserMainWindow.close)
+        self.btn_wyloguj.setStyleSheet("QPushButton"
                                       "{"
                                       "background-color : black;"
                                       "border-radius: 10px;"
@@ -162,7 +162,7 @@ class Ui_UserMainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         UserMainWindow.setWindowTitle(_translate("UserMainWindow", "Panel Użytkownika"))
         self.label1.setText(_translate("UserMainWindow", "Python - Słownik"))
-        self.btn_zaloguj.setText(_translate("UserMainWindow", "Wyloguj"))
+        self.btn_wyloguj.setText(_translate("UserMainWindow", "Wyloguj"))
         self.label_2.setText(_translate("UserMainWindow", "Wyszukaj pojęcie: "))
         self.btn_szukaj.setText(_translate("UserMainWindow", "Szukaj"))
         self.btn_losuj.setText(_translate("UserMainWindow", "Losuj pojęcie"))
@@ -184,6 +184,7 @@ class Ui_UserMainWindow(object):
         self.window1.show()
 
     def logowanie(self):
+        from Logowanie import Ui_Logowanie
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Logowanie()
         self.ui.setupUi(self.window)
@@ -225,16 +226,6 @@ class Ui_UserMainWindow(object):
 
 
 
-    def zamknij(self):
-        self.choice = QMessageBox.Question(self,'Czy chcesz wyjść z aplikacji?',
-                                      QMessageBox.Yes | QMessageBox.No)
-
-
-        if self.choice == QMessageBox.Yes:
-            self.logowanie()
-
-        elif self.choice == QMessageBox.No:
-            print('Kontynuuje dzialanie.')
 
 
 if __name__ == "__main__":
