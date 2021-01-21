@@ -40,6 +40,7 @@ class Ui_ShowDefinition(object):
         self.definicja = QtWidgets.QLineEdit(ShowDefinition)
         self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
+        self.definicja.setStyleSheet("background-color: white")
         # self.textBrowser.setObjectName("textBrowser")
         #layout.addWidget(self.textBrowser)
 
@@ -47,7 +48,7 @@ class Ui_ShowDefinition(object):
         self.poj = QtWidgets.QLineEdit(ShowDefinition)
         self.poj.setText(self.pojecie)
         self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
-
+        self.poj.setStyleSheet("background-color: white")
 
         #self.textBrowser_2.setObjectName("textBrowser_2")
         # layout.addWidget(self.textBrowser_2)
@@ -67,6 +68,7 @@ class Ui_ShowDefinition(object):
     def retranslateUi(self, ShowDefinition):
         _translate = QtCore.QCoreApplication.translate
         ShowDefinition.setWindowTitle(_translate("ShowDefinition", "Definicja"))
+        ShowDefinition.setStyleSheet("background-color: '#FAF2B6';")
         self.btn_back.setText(_translate("ShowDefinition", "Pwrót"))
 
     def goBack(self):

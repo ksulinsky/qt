@@ -79,6 +79,7 @@ class Ui_Akceptacja(object):
         self.definicja = QtWidgets.QLineEdit(Akceptacja)
         self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
+        self.definicja.setStyleSheet("background-color: white")
         # self.textBrowser.setObjectName("textBrowser")
         #layout.addWidget(self.textBrowser)
 
@@ -86,6 +87,7 @@ class Ui_Akceptacja(object):
         self.poj = QtWidgets.QLineEdit(Akceptacja)
         self.poj.setText(self.pojecie)
         self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
+        self.poj.setStyleSheet("background-color: white")
 
 
         #self.textBrowser_2.setObjectName("textBrowser_2")
@@ -107,7 +109,8 @@ class Ui_Akceptacja(object):
 
     def retranslateUi(self, Akceptacja):
         _translate = QtCore.QCoreApplication.translate
-        Akceptacja.setWindowTitle(_translate("Akceptacja", "Definicja"))
+        Akceptacja.setWindowTitle(_translate("Akceptacja", "Akceptacja pojęcia"))
+        Akceptacja.setStyleSheet("background-color: '#FFF9C4';")
         self.btn_back.setText(_translate("Akceptacja", "Pwrót"))
         self.btn_accept.setText(_translate("Akceptacja", "Akceptuj"))
         self.btn_delete.setText(_translate("Akceptacja", "Usuń"))
@@ -129,7 +132,7 @@ class Ui_Akceptacja(object):
                                 )
         self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
         self.mess.exec_()
-        Akceptacja.close()
+        # Akceptacja.close()
 
     def mesBoxAccept(self):
         self.mess = QtWidgets.QMessageBox()
@@ -148,7 +151,7 @@ class Ui_Akceptacja(object):
                                 )
         self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
         self.mess.exec_()
-        Akceptacja.close()
+
 
 
 
@@ -159,6 +162,7 @@ class Ui_Akceptacja(object):
     def accept(self):
         print("akceptacja")
         self.mesBoxAccept()
+        # Akceptacja.close()
 
 
     def goBack(self):

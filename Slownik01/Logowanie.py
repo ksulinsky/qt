@@ -50,6 +50,7 @@ class Ui_Logowanie(object):
                              "background-color : lightgreen;"
                              "}")
         self.btn_logIn.clicked.connect(self.logIn)
+        self.btn_logIn.clicked.connect(Logowanie.close)
 
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -66,6 +67,7 @@ class Ui_Logowanie(object):
 
         self.lineEdit_email = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_email.setObjectName("lineEdit_email")
+        self.lineEdit_email.setStyleSheet("background-color: white;")
         self.verticalLayout.addWidget(self.lineEdit_email)
 
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -74,6 +76,7 @@ class Ui_Logowanie(object):
 
         self.lineEdit_password = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_password.setObjectName("lineEdit_password")
+        self.lineEdit_password.setStyleSheet("background-color: white;")
         self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.verticalLayout.addWidget(self.lineEdit_password)
 
@@ -111,6 +114,7 @@ class Ui_Logowanie(object):
     def retranslateUi(self, Logowanie):
         _translate = QtCore.QCoreApplication.translate
         Logowanie.setWindowTitle(_translate("Logowanie", "Logowanie"))
+        Logowanie.setStyleSheet("background-color: '#CCCCFF';")
         self.label_log.setText(_translate("Logowanie", "LOGOWANIE"))
         self.clbtn_registration.setText(_translate("Logowanie", "Nie masz konta? Zarejestruj się"))
         self.btn_logIn.setText(_translate("Logowanie", "Zaloguj"))
@@ -153,22 +157,36 @@ class Ui_Logowanie(object):
         self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
         self.mess.exec_()
 
+
     def logIn(self):
         baza = Baza2()
-        logged = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
+        logged, uprawnienia = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
 
-        if (logged==1 or self.lineEdit_email.text()!="" or self.lineEdit_password.text() !=""):
-            from UserMainWindow import Ui_UserMainWindow
-            self.ui1 = Ui_UserMainWindow()
-            self.window2 = QtWidgets.QMainWindow()
-            self.ui1.setupUi(self.window2)
-            self.window2.show()
+        if (self.lineEdit_email.text()!="" or self.lineEdit_password.text() !=""):
+            if(logged ==1 and uprawnienia==1):
+                from UserMainWindow import Ui_UserMainWindow
+                self.ui1 = Ui_UserMainWindow()
+                self.window2 = QtWidgets.QMainWindow()
+                self.ui1.setupUi(self.window2)
+                self.window2.show()
 
-            Logowanie.close()
+            elif(logged==1 and uprawnienia==2):
+                from AdminMainWindow import Ui_AdminMainWindow
+                self.ui1 = Ui_AdminMainWindow()
+                self.window2 = QtWidgets.QMainWindow()
+                self.ui1.setupUi(self.window2)
+                self.window2.show()
+            else:
+                print("niezalogowano")
+
+                self.mesBox()
+
 
         else:
             print("niezalogowano")
+
             self.mesBox()
+
 
 
 

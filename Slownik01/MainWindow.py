@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMessageBox, QLabel
 from Definicja import Ui_ShowDefinition
 from Logowanie import Ui_Logowanie
 from baza2 import Baza2
@@ -13,6 +14,14 @@ class Ui_MainWindow(object):
         MainWindow.resize(639, 477)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+        image = QPixmap('python-logo.png')
+        imageLabel = QLabel(self.centralwidget)
+        imageLabel.setScaledContents(True)
+        image.scaled(105, 50)
+        imageLabel.setPixmap(image)
+
+        imageLabel.move(390, 320)
 
         self.showDef = Ui_ShowDefinition()
 
@@ -67,6 +76,7 @@ class Ui_MainWindow(object):
         self.lineEdit_pojecie = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
         self.lineEdit_pojecie.setObjectName("lineEdit_pojecie")
         self.horizontalLayout.addWidget(self.lineEdit_pojecie)
+        self.lineEdit_pojecie.setStyleSheet("background-color: '#CCFFFF';")
 
         #szukaj------------------------------------------
         self.btn_szukaj = QtWidgets.QPushButton(self.centralwidget)
@@ -97,6 +107,7 @@ class Ui_MainWindow(object):
         self.lista = self.baza1.lista_pojec()
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.setStyleSheet("background-color : '#FFFF99';")
         for i in self.lista:
             self.comboBox.addItem(i)
 
@@ -108,8 +119,8 @@ class Ui_MainWindow(object):
         self.btn_szukajZListy.setObjectName("btn_szukajZListy")
         self.btn_szukajZListy.setStyleSheet("QPushButton"
                                             "{"
-                                            "background-color : '#66CC66';"
-                                            # "border-radius: 10px;"'#F6D542'
+                                            "background-color : '#FFFF66';"
+                                            
                                             "color : black;"
                                             "}"
                                             )
@@ -121,7 +132,7 @@ class Ui_MainWindow(object):
         self.btn_losuj.setObjectName("btn_losuj")
         self.btn_losuj.setStyleSheet("QPushButton"
                                      "{"
-                                     "background-color : '#66CC66';"
+                                     "background-color : '#FFFF33';"
                                      # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
@@ -146,7 +157,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Panel Gościa"))
+        MainWindow.setStyleSheet("background-color: '#99CCFF';")
         self.label1.setText(_translate("MainWindow", "Python - Słownik"))
         self.btn_zaloguj.setText(_translate("MainWindow", "Zaloguj"))
         self.label_2.setText(_translate("MainWindow", "Wyszukaj pojęcie: "))

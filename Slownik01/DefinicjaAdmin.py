@@ -61,6 +61,7 @@ class Ui_ShowDefinitionAdmin(object):
         self.definicja = QtWidgets.QLineEdit(ShowDefinitionAdmin)
         self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
+        self.definicja.setStyleSheet("background-color: white")
         # self.textBrowser.setObjectName("textBrowser")
         #layout.addWidget(self.textBrowser)
 
@@ -68,6 +69,7 @@ class Ui_ShowDefinitionAdmin(object):
         self.poj = QtWidgets.QLineEdit(ShowDefinitionAdmin)
         self.poj.setText(self.pojecie)
         self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
+        self.poj.setStyleSheet("background-color: white")
 
 
         #self.textBrowser_2.setObjectName("textBrowser_2")
@@ -87,9 +89,11 @@ class Ui_ShowDefinitionAdmin(object):
 
     def retranslateUi(self, ShowDefinition):
         _translate = QtCore.QCoreApplication.translate
-        ShowDefinition.setWindowTitle(_translate("ShowDefinitionAdmin", "DefinicjaAdmin"))
+        ShowDefinition.setWindowTitle(_translate("ShowDefinitionAdmin", "Definicja"))
+        ShowDefinition.setStyleSheet("background-color: '#FAF2B6';")
         self.btn_back.setText(_translate("ShowDefinitionAdmin", "Pwrót"))
         self.btn_delete.setText(_translate("ShowDefinitionAdmin", "Usuń"))
+
 
     def delete(self):
         self.baza.usun_pojecie_admin(self.pojecie)

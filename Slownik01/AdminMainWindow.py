@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox, QListWidget, QLineEdit
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMessageBox, QListWidget, QLineEdit, QLabel
 from Definicja import Ui_ShowDefinition
 from Logowanie import Ui_Logowanie
 from DodawaniePojecia import Ui_Dodawanie
@@ -10,11 +11,19 @@ from baza2 import Baza2
 class Ui_AdminMainWindow(object):
 
     def setupUi(self, AdminMainWindow):
-        click=0
+
         AdminMainWindow.setObjectName("UserMainWindow")
         AdminMainWindow.resize(639, 477)
         self.centralwidget = QtWidgets.QWidget(AdminMainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+        image = QPixmap('python-logo.png')
+        imageLabel = QLabel(self.centralwidget)
+        imageLabel.setScaledContents(True)
+        image.scaled(105, 50)
+        imageLabel.setPixmap(image)
+
+        imageLabel.move(390, 320)
 
         self.showDef = Ui_ShowDefinition()
 
@@ -66,6 +75,7 @@ class Ui_AdminMainWindow(object):
         # pojęcie----------------------------------------------------------------------------
         self.lineEdit_pojecie = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
         self.lineEdit_pojecie.setObjectName("lineEdit_pojecie")
+        self.lineEdit_pojecie.setStyleSheet("background-color: '#CCFFFF';")
         self.horizontalLayout.addWidget(self.lineEdit_pojecie)
 
         #szukaj------------------------------------------
@@ -93,12 +103,11 @@ class Ui_AdminMainWindow(object):
 
         # ---LISTA-------------
         self.baza1 = Baza2()
-
-
-
         self.lista = self.baza1.lista_pojec()
+
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.setStyleSheet("background-color : '#FFFF99';")
         for i in self.lista:
             self.comboBox.addItem(i)
 
@@ -109,8 +118,8 @@ class Ui_AdminMainWindow(object):
         self.btn_szukajZListy.setObjectName("btn_szukajZListy")
         self.btn_szukajZListy.setStyleSheet("QPushButton"
                                      "{"
-                                     "background-color : '#66CC66';"
-                                     # "border-radius: 10px;"'#F6D542'
+                                     "background-color : '#FFFF66';"
+                                     
                                      "color : black;"
                                      "}"
                                      )
@@ -123,7 +132,7 @@ class Ui_AdminMainWindow(object):
         self.btn_losuj.setObjectName("btn_losuj")
         self.btn_losuj.setStyleSheet("QPushButton"
                                       "{"
-                                      "background-color : '#66CC66';"
+                                      "background-color : '#FFFF33';"
                                       # "border-radius: 10px;"'#F6D542'
                                       "color : black;"
                                       "}"
@@ -133,13 +142,12 @@ class Ui_AdminMainWindow(object):
         self.btn_losuj.clicked.connect(AdminMainWindow.close)
 
 
-
         # -----dodaj pojecie do bazy-----------
         self.btn_add = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.btn_add.setObjectName("btn_add")
         self.btn_add.setStyleSheet("QPushButton"
                                      "{"
-                                     "background-color : '#66CC33';"
+                                     "background-color : '#FFFF00';"
                                      # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
@@ -153,7 +161,7 @@ class Ui_AdminMainWindow(object):
         self.btn_accept.setObjectName("btn_accept")
         self.btn_accept.setStyleSheet("QPushButton"
                                    "{"
-                                   "background-color : '#66CC33';"
+                                   "background-color : '#FFCC33';"
                                    # "border-radius: 10px;"'#F6D542'
                                    "color : black;"
                                    "}"
@@ -162,23 +170,8 @@ class Ui_AdminMainWindow(object):
         self.btn_accept.clicked.connect(self.showAccept)
         # self.btn_accept.clicked.connect(AdminMainWindow.close)
         self.lista2 = QListWidget()
+        self.lista2.setWindowTitle("Do akceptacji")
 
-
-
-
-        # # -----------wyswietl wszystkie pojecia z bazy --------
-        # self.btn_showAll = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        # self.btn_showAll.setObjectName("btn_showAll")
-        # self.btn_showAll.setStyleSheet("QPushButton"
-        #                               "{"
-        #                               "background-color : '#66CC33';"
-        #                               # "border-radius: 10px;"'#F6D542'
-        #                               "color : black;"
-        #                               "}"
-        #                               )
-        # self.verticalLayout.addWidget(self.btn_showAll)
-        # self.btn_showAll.clicked.connect(self.add)
-        # self.btn_showAll.clicked.connect(AdminMainWindow.close)
 
         AdminMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(AdminMainWindow)
@@ -195,6 +188,7 @@ class Ui_AdminMainWindow(object):
     def retranslateUi(self, AdminMainWindow):
         _translate = QtCore.QCoreApplication.translate
         AdminMainWindow.setWindowTitle(_translate("AdminMainWindow", "Panel Administratora"))
+        AdminMainWindow.setStyleSheet("background-color: '#99CCFF';")
         self.label1.setText(_translate("AdminMainWindow", "Python - Słownik"))
         self.btn_zaloguj.setText(_translate("AdminMainWindow", "Wyloguj"))
         self.label_2.setText(_translate("AdminMainWindow", "Wyszukaj pojęcie: "))
@@ -203,8 +197,7 @@ class Ui_AdminMainWindow(object):
         self.btn_szukajZListy.setText(_translate("AdminMainWindow", "Szukaj z listy"))
         self.btn_add.setText(_translate("AdminMainWindow", "Dodaj pojęcie"))
         self.btn_accept.setText(_translate("AdminMainWindow", "Pojęcia do akceptacji"))
-        # self.btn_showAll.setText(_translate("AdminMainWindow", "Wszystkie pojęcia"))
-        # self.lista2.setWindowTitle(_translate("AdminMainWindow", "Wszystkie pojęcia"))
+
 
     def listaTresc(self):
         self.item=self.lista2.currentItem()
@@ -223,8 +216,6 @@ class Ui_AdminMainWindow(object):
         self.window1.show()
         
     def showAccept(self):
-
-
         self.fields = self.baza1.wyswietl_akceptacja()
         for i in self.fields:
             self.lista2.addItem(str(i))

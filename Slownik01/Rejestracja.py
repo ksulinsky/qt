@@ -37,6 +37,7 @@ class Ui_Registration(object):
 
         self.lineEdit_email = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_email.setObjectName("lineEdit_email")
+        self.lineEdit_email.setStyleSheet("background-color: white;")
         self.verticalLayout.addWidget(self.lineEdit_email)
 
         self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -45,6 +46,8 @@ class Ui_Registration(object):
 
         self.lineEdit_password = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_password.setObjectName("lineEdit_password")
+        self.lineEdit_password.setStyleSheet("background-color: white;")
+        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.verticalLayout.addWidget(self.lineEdit_password)
 
         self.label_4 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -53,6 +56,7 @@ class Ui_Registration(object):
 
         self.lineEdit_confirmPassword = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_confirmPassword.setObjectName("lineEdit_confirmPassword")
+        self.lineEdit_confirmPassword.setStyleSheet("background-color: white;")
         self.verticalLayout.addWidget(self.lineEdit_confirmPassword)
 
         # ----stworz-------------------
@@ -105,6 +109,7 @@ class Ui_Registration(object):
     def retranslateUi(self, Registration):
         _translate = QtCore.QCoreApplication.translate
         Registration.setWindowTitle(_translate("Registration", "Rejestracja"))
+        Registration.setStyleSheet("background-color: '#CCCCFF';")
         self.label.setText(_translate("Registration", "STWÓRZ KONTO"))
         self.label_2.setText(_translate("Registration", "E-mail"))
         self.label_3.setText(_translate("Registration", "Hasło"))

@@ -85,12 +85,12 @@ class Baza2:
             if not fields:
                 return 0,0
             else:
-                porownanie=hashlib.md5(haselko.encode('utf-8')).hexdigest()
+                porownanie = hashlib.md5(haselko.encode('utf-8')).hexdigest()
 
-                if porownanie==fields[0]:
-                    return 1,fields2[0]
+                if porownanie == fields[0]:
+                    return 1, fields2[0]
                 else:
-                    return 0
+                    return 0,0
         def zarejestruj(self,logen,haselko,email1):
             query = "insert into uzytkownicy(id,nazwa,haslo,uprawnienia,email) values (NULL,%s,md5(%s),1,%s)"
             self.cur.execute(query,(logen,haselko,email1,))
