@@ -36,7 +36,7 @@ class Ui_Akceptacja(object):
                                     "{"
                                     "background-color : lightblue;"
                                     "}")
-        # self.btn_back.clicked.connect(self.goBack)
+
         self.btn_back.clicked.connect(Akceptacja.close)
 
         # -----  AKCEPTUJ  -----------------------------------
@@ -132,7 +132,7 @@ class Ui_Akceptacja(object):
                                 )
         self.mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
         self.mess.exec_()
-        # Akceptacja.close()
+
 
     def mesBoxAccept(self):
         self.mess = QtWidgets.QMessageBox()
@@ -154,36 +154,25 @@ class Ui_Akceptacja(object):
 
 
 
-
     def delete(self):
-        self.baza.usun_pojecie_admin(self.pojecie)
+        self.baza.akceptajca_usun(self.pojecie)
         self.mesBoxDelete()
+        # self.goBack()
 
     def accept(self):
-        print("akceptacja")
+        self.baza.akeptacja_ok(self.poj.text(), self.definicja.text())
+
         self.mesBoxAccept()
-        # Akceptacja.close()
+        # self.goBack()
 
 
     def goBack(self):
-        if(self.click==1):
-            from UserMainWindow import Ui_UserMainWindow
-            self.ui1 = Ui_UserMainWindow()
-            self.window2 = QtWidgets.QMainWindow()
-            self.ui1.setupUi(self.window2)
-            self.window2.show()
-        elif(self.click==2):
-            from AdminMainWindow import Ui_AdminMainWindow
-            self.ui1 = Ui_AdminMainWindow()
-            self.window2 = QtWidgets.QMainWindow()
-            self.ui1.setupUi(self.window2)
-            self.window2.show()
-        else:
-            from MainWindow import Ui_MainWindow
-            self.ui1 = Ui_MainWindow()
-            self.window2 = QtWidgets.QMainWindow()
-            self.ui1.setupUi(self.window2)
-            self.window2.show()
+        from AdminMainWindow import Ui_AdminMainWindow
+        self.ui1 = Ui_AdminMainWindow()
+        self.window2 = QtWidgets.QMainWindow()
+        self.ui1.setupUi(self.window2)
+        self.window2.show()
+
 
 
 

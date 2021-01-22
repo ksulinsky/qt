@@ -169,8 +169,11 @@ class Ui_AdminMainWindow(object):
         self.verticalLayout.addWidget(self.btn_accept)
         self.btn_accept.clicked.connect(self.showAccept)
         # self.btn_accept.clicked.connect(AdminMainWindow.close)
-        self.lista2 = QListWidget()
-        self.lista2.setWindowTitle("Do akceptacji")
+
+        self.list_accept = QListWidget()
+        self.list_accept.setWindowTitle("Do akceptacji")
+
+
 
 
         AdminMainWindow.setCentralWidget(self.centralwidget)
@@ -200,7 +203,8 @@ class Ui_AdminMainWindow(object):
 
 
     def listaTresc(self):
-        self.item=self.lista2.currentItem()
+
+        self.item=self.list_accept.currentItem()
         print(str(self.item.text()))
         self.defi = self.baza1.get_tresc_akceptacja(str(self.item.text()))
         print(self.defi[0])
@@ -214,14 +218,20 @@ class Ui_AdminMainWindow(object):
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
         self.window1.show()
-        
-    def showAccept(self):
-        self.fields = self.baza1.wyswietl_akceptacja()
-        for i in self.fields:
-            self.lista2.addItem(str(i))
 
-        self.lista2.show()
-        self.lista2.clicked.connect(self.listaTresc)
+
+
+    def showAccept(self):
+        self.baza3 = Baza2()
+        self.list_accept.clear()
+        self.fields = self.baza3.wyswietl_akceptacja()
+
+        for i in self.fields:
+            self.list_accept.addItem(str(i))
+
+        self.list_accept.show()
+        self.list_accept.clicked.connect(self.listaTresc)
+        self.list_accept.clicked.connect(self.list_accept.close)
 
     def szukajZListy(self):
         self.ui = Ui_ShowDefinitionAdmin()
@@ -255,6 +265,7 @@ class Ui_AdminMainWindow(object):
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
         self.window1.show()
+
     def losowanie(self):
         self.ui = Ui_ShowDefinition()
 

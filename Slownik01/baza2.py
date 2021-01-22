@@ -103,27 +103,16 @@ class Baza2:
             if not fields:
                 return 0
             return fields
-        def decyzje_akceptacja(self,fields):
-            if not fields:
-                return 0
-            for x in fields:
-                query = "select * from akceptacja where id=%s"
-                self.cur.execute(query, (x,))
-                title = [z['tytul'] for z in self.cur.fetchall()]
-                self.cur.execute(query, (x,))
-                cont=[y['tresc'] for y in self.cur.fetchall()]
-                print(title, cont)
 
-                title1 = title[0]
-                cont1 = cont[0]
-                odp=input("Czy chcesz? ")
-                if(odp=="tak"):
-                    query5="insert into pojecia (id,tytul,tresc) values (NULL,%s,%s)"
-                    self.cur.execute(query5, (title1,cont1,))
-                    query3="delete from akceptacja where id=%s"
-                    self.cur.execute(query3, (x,))
-                    self.db.commit()
-                elif odp=="nie":
-                    query4 = "delete from akceptacja where id=%s"
-                    self.cur.execute(query4, (x,))
-                    self.db.commit()
+        def akeptacja_ok(self, tytul, tresc):
+            query5 = "insert into pojecia (id,tytul,tresc) values (NULL,%s,%s)"
+            self.cur.execute(query5, (tytul, tresc,))
+            query3 = "delete from akceptacja where tytul=%s"
+            self.cur.execute(query3, (tytul,))
+            self.db.commit()
+
+        def akceptajca_usun(self, tytul):
+            query4 = "delete from akceptacja where tytul=%s"
+            self.cur.execute(query4, (tytul,))
+            self.db.commit()
+

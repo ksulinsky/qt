@@ -3,7 +3,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMessageBox, QLabel
 from Definicja import Ui_ShowDefinition
-
 from DodawaniePojecia import Ui_Dodawanie
 from baza2 import Baza2
 
@@ -236,10 +235,6 @@ class Ui_UserMainWindow(object):
         self.ui.setupUi(self.window)
         self.ui.click1=1
         self.window.show()
-
-
-
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
