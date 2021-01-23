@@ -9,7 +9,6 @@ from baza2 import Baza2
 
 class Ui_UserMainWindow(object):
 
-
     def setupUi(self, UserMainWindow):
         click=0
         UserMainWindow.setObjectName("UserMainWindow")
@@ -93,7 +92,6 @@ class Ui_UserMainWindow(object):
         self.btn_szukaj.clicked.connect(self.passingInformation)
         self.btn_szukaj.clicked.connect(UserMainWindow.close)
         self.btn_szukaj.setObjectName("QPushButton")
-        # self.horizontalLayout.addWidget(self.btn_szukaj)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 280, 241, 131))
@@ -140,8 +138,6 @@ class Ui_UserMainWindow(object):
         self.verticalLayout.addWidget(self.btn_losuj)
         self.btn_losuj.clicked.connect(self.losowanie)
         self.btn_losuj.clicked.connect(UserMainWindow.close)
-
-
 
         # -----dodaj pojecie do bazy-----------
         self.btn_add = QtWidgets.QPushButton(self.verticalLayoutWidget)

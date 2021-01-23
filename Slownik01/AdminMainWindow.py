@@ -172,7 +172,7 @@ class Ui_AdminMainWindow(object):
 
         self.list_accept = QListWidget()
         self.list_accept.setWindowTitle("Do akceptacji")
-
+        self.list_accept.setStyleSheet("background-color: '#99CCCC'")
 
 
 

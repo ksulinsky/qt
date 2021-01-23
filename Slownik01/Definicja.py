@@ -1,5 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow
 import sys
 
@@ -36,19 +37,34 @@ class Ui_ShowDefinition(object):
 
         self.btn_back.setObjectName("pushButton")
 
-
-        self.definicja = QtWidgets.QLineEdit(ShowDefinition)
+        self.definicja = QtWidgets.QLabel(ShowDefinition)
         self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
         self.definicja.setStyleSheet("background-color: white")
-        # self.textBrowser.setObjectName("textBrowser")
-        #layout.addWidget(self.textBrowser)
+
+        font1 = QtGui.QFont()
+        font1.setFamily("Lucida Fax")
+        font1.setPointSize(10)
+        font1.setItalic(False)
+        font1.setWeight(75)
+        self.definicja.setFont(font1)
+        self.definicja.setAlignment(Qt.AlignCenter)
+        self.definicja.setWordWrap(True)
 
         # pojecie--------------------
-        self.poj = QtWidgets.QLineEdit(ShowDefinition)
+        self.poj = QtWidgets.QLabel(ShowDefinition)
         self.poj.setText(self.pojecie)
         self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
         self.poj.setStyleSheet("background-color: white")
+
+        font = QtGui.QFont()
+        font.setFamily("Lucida Fax")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.poj.setFont(font)
+        self.poj.setAlignment(Qt.AlignCenter)
 
         #self.textBrowser_2.setObjectName("textBrowser_2")
         # layout.addWidget(self.textBrowser_2)
