@@ -17,7 +17,6 @@ class Ui_ShowDefinitionAdmin(object):
         ShowDefinitionAdmin.resize(640, 480)
 
         self.baza = Baza2()
-        #layout = QVBoxLayout()
         self.centralwidget = QtWidgets.QWidget(ShowDefinitionAdmin)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -54,15 +53,7 @@ class Ui_ShowDefinitionAdmin(object):
                                     "}")
         self.btn_delete.clicked.connect(self.delete)
         self.btn_delete.clicked.connect(ShowDefinitionAdmin.close)
-
-
         self.btn_delete.setObjectName("delete")
-
-
-        # self.definicja = QtWidgets.QLineEdit(ShowDefinitionAdmin)
-        # self.definicja.setText(self.tresc)
-        # self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
-        # self.definicja.setStyleSheet("background-color: white")
 
         self.definicja = QtWidgets.QLabel(ShowDefinitionAdmin)
         self.definicja.setText(self.tresc)
@@ -79,16 +70,12 @@ class Ui_ShowDefinitionAdmin(object):
         self.definicja.setWordWrap(True)
 
 
-
-
-        # self.textBrowser.setObjectName("textBrowser")
-        #layout.addWidget(self.textBrowser)
-
         # pojecie--------------------
         self.poj = QtWidgets.QLabel(ShowDefinitionAdmin)
         self.poj.setText(self.pojecie)
-        self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
+        self.poj.setGeometry(QtCore.QRect(155, 10, 211, 51))
         self.poj.setStyleSheet("background-color: white")
+        self.poj.setFixedSize(340,60)
 
         font = QtGui.QFont()
         font.setFamily("Lucida Fax")
@@ -98,9 +85,6 @@ class Ui_ShowDefinitionAdmin(object):
         font.setWeight(75)
         self.poj.setFont(font)
         self.poj.setAlignment(Qt.AlignCenter)
-
-        #self.textBrowser_2.setObjectName("textBrowser_2")
-        # layout.addWidget(self.textBrowser_2)
 
         ShowDefinitionAdmin.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(ShowDefinitionAdmin)
@@ -126,6 +110,7 @@ class Ui_ShowDefinitionAdmin(object):
         self.baza.usun_pojecie_admin(self.pojecie)
 
         self.mesBoxDelete()
+        self.goBack()
     def mesBoxDelete(self):
         self.mess = QtWidgets.QMessageBox()
         self.mess.setWindowTitle("Usunięto")

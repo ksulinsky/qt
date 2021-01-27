@@ -1,5 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow
 import sys
 from baza2 import Baza2
@@ -18,8 +19,6 @@ class Ui_Akceptacja(object):
         Akceptacja.resize(640, 480)
 
         self.baza = Baza2()
-
-        #layout = QVBoxLayout()
         self.centralwidget = QtWidgets.QWidget(Akceptacja)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -72,26 +71,40 @@ class Ui_Akceptacja(object):
                                       "}")
         self.btn_delete.clicked.connect(self.delete)
         self.btn_delete.clicked.connect(Akceptacja.close)
-
         self.btn_delete.setObjectName("delete")
 
 
-        self.definicja = QtWidgets.QLineEdit(Akceptacja)
+        self.definicja = QtWidgets.QLabel(Akceptacja)
         self.definicja.setText(self.tresc)
         self.definicja.setGeometry(QtCore.QRect(110, 110, 421, 291))
         self.definicja.setStyleSheet("background-color: white")
-        # self.textBrowser.setObjectName("textBrowser")
-        #layout.addWidget(self.textBrowser)
+
+        font1 = QtGui.QFont()
+        font1.setFamily("Lucida Fax")
+        font1.setPointSize(10)
+        font1.setItalic(False)
+        font1.setWeight(75)
+        self.definicja.setFont(font1)
+        self.definicja.setAlignment(Qt.AlignCenter)
+        self.definicja.setWordWrap(True)
+
 
         # pojecie--------------------
-        self.poj = QtWidgets.QLineEdit(Akceptacja)
+        self.poj = QtWidgets.QLabel(Akceptacja)
         self.poj.setText(self.pojecie)
-        self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
+        self.poj.setGeometry(QtCore.QRect(155, 10, 211, 51))
         self.poj.setStyleSheet("background-color: white")
+        self.poj.setFixedSize(340, 60)
 
+        font = QtGui.QFont()
+        font.setFamily("Lucida Fax")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.poj.setFont(font)
+        self.poj.setAlignment(Qt.AlignCenter)
 
-        #self.textBrowser_2.setObjectName("textBrowser_2")
-        # layout.addWidget(self.textBrowser_2)
 
         Akceptacja.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Akceptacja)
@@ -157,13 +170,11 @@ class Ui_Akceptacja(object):
     def delete(self):
         self.baza.akceptajca_usun(self.pojecie)
         self.mesBoxDelete()
-        # self.goBack()
 
     def accept(self):
         self.baza.akeptacja_ok(self.poj.text(), self.definicja.text())
 
         self.mesBoxAccept()
-        # self.goBack()
 
 
     def goBack(self):

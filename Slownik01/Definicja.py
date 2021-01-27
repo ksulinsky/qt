@@ -54,8 +54,9 @@ class Ui_ShowDefinition(object):
         # pojecie--------------------
         self.poj = QtWidgets.QLabel(ShowDefinition)
         self.poj.setText(self.pojecie)
-        self.poj.setGeometry(QtCore.QRect(210, 10, 211, 51))
+        self.poj.setGeometry(QtCore.QRect(155, 10, 211, 51))
         self.poj.setStyleSheet("background-color: white")
+        self.poj.setFixedSize(340, 60)
 
         font = QtGui.QFont()
         font.setFamily("Lucida Fax")

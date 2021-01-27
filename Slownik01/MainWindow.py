@@ -92,7 +92,6 @@ class Ui_MainWindow(object):
         self.btn_szukaj.clicked.connect(self.passingInformation)
         self.btn_szukaj.clicked.connect(MainWindow.close)
 
-        # self.horizontalLayout.addWidget(self.btn_szukaj)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 280, 241, 131))
@@ -102,7 +101,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
 
 
-        # ---LISTa----------
+        # ---LISTA----------
         self.baza1 = Baza2()
         self.lista = self.baza1.lista_pojec()
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
@@ -133,7 +132,6 @@ class Ui_MainWindow(object):
         self.btn_losuj.setStyleSheet("QPushButton"
                                      "{"
                                      "background-color : '#FFFF33';"
-                                     # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
                                      )
@@ -198,6 +196,7 @@ class Ui_MainWindow(object):
         self.window1 = QtWidgets.QMainWindow()
         self.ui.setupUi(self.window1)
         self.window1.show()
+
     def losowanie(self):
         self.ui = Ui_ShowDefinition()
 

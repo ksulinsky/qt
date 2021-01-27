@@ -21,7 +21,7 @@ class Ui_Logowanie(object):
         font.setPointSize(18)
         font.setBold(True)
         font.setItalic(False)
-        # font.setUnderline(True)
+
         font.setWeight(75)
 
 
@@ -34,7 +34,7 @@ class Ui_Logowanie(object):
         self.clbtn_registration.setGeometry(QtCore.QRect(170, 310, 261, 41))
         self.clbtn_registration.setObjectName("commandLinkButton")
         self.clbtn_registration.clicked.connect(self.goToRegistration)
-        self.clbtn_registration.clicked.connect(Logowanie.close)
+        # self.clbtn_registration.clicked.connect(Logowanie.close)
 
         self.btn_logIn = QtWidgets.QPushButton(self.centralwidget)
         self.btn_logIn.setGeometry(QtCore.QRect(260, 240, 91, 31))

@@ -38,6 +38,7 @@ class Ui_AdminMainWindow(object):
         font.setItalic(False)
         font.setUnderline(True)
         font.setWeight(75)
+
         self.label1.setFont(font)
         self.label1.setOpenExternalLinks(False)
         self.label1.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
@@ -81,7 +82,6 @@ class Ui_AdminMainWindow(object):
         #szukaj------------------------------------------
         self.btn_szukaj = QtWidgets.QPushButton(self.centralwidget)
         self.btn_szukaj.setGeometry(QtCore.QRect(418, 178, 75, 23))
-
         self.btn_szukaj.setStyleSheet("QPushButton"
                                       "{"
                                       "background-color : '#FBA40A';"
@@ -92,7 +92,6 @@ class Ui_AdminMainWindow(object):
         self.btn_szukaj.clicked.connect(self.passingInformation)
         self.btn_szukaj.clicked.connect(AdminMainWindow.close)
         self.btn_szukaj.setObjectName("QPushButton")
-        # self.horizontalLayout.addWidget(self.btn_szukaj)
 
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 270, 241, 170))
@@ -108,6 +107,7 @@ class Ui_AdminMainWindow(object):
         self.comboBox = QtWidgets.QComboBox(self.verticalLayoutWidget)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.setStyleSheet("background-color : '#FFFF99';")
+
         for i in self.lista:
             self.comboBox.addItem(i)
 
@@ -133,7 +133,6 @@ class Ui_AdminMainWindow(object):
         self.btn_losuj.setStyleSheet("QPushButton"
                                       "{"
                                       "background-color : '#FFFF33';"
-                                      # "border-radius: 10px;"'#F6D542'
                                       "color : black;"
                                       "}"
                                       )
@@ -148,7 +147,6 @@ class Ui_AdminMainWindow(object):
         self.btn_add.setStyleSheet("QPushButton"
                                      "{"
                                      "background-color : '#FFFF00';"
-                                     # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
                                      )
@@ -162,13 +160,11 @@ class Ui_AdminMainWindow(object):
         self.btn_accept.setStyleSheet("QPushButton"
                                    "{"
                                    "background-color : '#FFCC33';"
-                                   # "border-radius: 10px;"'#F6D542'
                                    "color : black;"
                                    "}"
                                    )
         self.verticalLayout.addWidget(self.btn_accept)
         self.btn_accept.clicked.connect(self.showAccept)
-        # self.btn_accept.clicked.connect(AdminMainWindow.close)
 
         self.list_accept = QListWidget()
         self.list_accept.setWindowTitle("Do akceptacji")
@@ -220,7 +216,6 @@ class Ui_AdminMainWindow(object):
         self.window1.show()
 
 
-
     def showAccept(self):
         self.baza3 = Baza2()
         self.list_accept.clear()
@@ -234,11 +229,17 @@ class Ui_AdminMainWindow(object):
         self.list_accept.clicked.connect(self.list_accept.close)
 
     def szukajZListy(self):
+        self.baza1 = Baza2()
+        self.lista.clear()
+        self.lista = self.baza1.lista_pojec()
+
+        for i in self.lista:
+            self.comboBox.addItem(i)
+
         self.ui = Ui_ShowDefinitionAdmin()
         self.ui.pojecie = self.comboBox.currentText()
 
-        baza = Baza2()
-        self.trescTemp = baza.get_tresc(self.ui.pojecie)
+        self.trescTemp = self.baza1.get_tresc(self.ui.pojecie)
         self.ui.tresc = self.trescTemp[0]
         self.ui.click = 2
 

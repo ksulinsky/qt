@@ -117,7 +117,6 @@ class Ui_UserMainWindow(object):
         self.btn_szukajZListy.setStyleSheet("QPushButton"
                                      "{"
                                      "background-color : '#FFFF00';"
-                                     # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
                                      )
@@ -131,7 +130,6 @@ class Ui_UserMainWindow(object):
         self.btn_losuj.setStyleSheet("QPushButton"
                                       "{"
                                       "background-color : '#FFFF33';"
-                                      # "border-radius: 10px;"'#F6D542'
                                       "color : black;"
                                       "}"
                                       )
@@ -145,7 +143,6 @@ class Ui_UserMainWindow(object):
         self.btn_add.setStyleSheet("QPushButton"
                                      "{"
                                      "background-color : '#FFFF66';"
-                                     # "border-radius: 10px;"'#F6D542'
                                      "color : black;"
                                      "}"
                                      )

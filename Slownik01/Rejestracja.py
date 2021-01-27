@@ -18,7 +18,6 @@ class Ui_Registration(object):
         font.setPointSize(14)
         font.setBold(True)
         font.setItalic(False)
-        # font.setUnderline(True)
         font.setWeight(75)
 
         self.label.setFont(font)
@@ -27,6 +26,7 @@ class Ui_Registration(object):
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(210, 70, 201, 171))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -74,7 +74,7 @@ class Ui_Registration(object):
                                      "background-color : lightgreen;"
                                      "}")
         self.btn_regist.clicked.connect(self.signUp)
-        # self.btn_regist.clicked.connect(Registration.close)
+        self.btn_regist.clicked.connect(Registration.close)
 
         # powrót--------------------------------------------------------
         self.btn_back = QtWidgets.QPushButton(self.centralwidget)
@@ -127,7 +127,7 @@ class Ui_Registration(object):
     def mesBox(self):
         self.mess = QtWidgets.QMessageBox()
         self.mess.setWindowTitle("Błąd")
-        self.mess.setText("Nie zalogowano")
+        self.mess.setText("Nie utworzono!")
         self.mess.setStyleSheet(
                                 "QPushButton"
                                 "{"
@@ -146,8 +146,8 @@ class Ui_Registration(object):
 
     def signUp(self):
         baza = Baza2()
-        if (self.lineEdit_confirmPassword.text()!="" or self.lineEdit_email.text() != ""
-                or self.lineEdit_password.text() != ""):
+        if (self.lineEdit_confirmPassword.text() != "" and self.lineEdit_email.text() != ""
+                and self.lineEdit_password.text() != ""):
             baza.zarejestruj(self.lineEdit_confirmPassword.text(),
                              self.lineEdit_password.text(), self.lineEdit_email.text())
             self.goBack()
