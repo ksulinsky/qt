@@ -65,10 +65,10 @@ class Ui_Logowanie(object):
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
 
-        self.lineEdit_email = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_email.setObjectName("lineEdit_email")
-        self.lineEdit_email.setStyleSheet("background-color: white;")
-        self.verticalLayout.addWidget(self.lineEdit_email)
+        self.lineEdit_login = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_login.setObjectName("lineEdit_email")
+        self.lineEdit_login.setStyleSheet("background-color: white;")
+        self.verticalLayout.addWidget(self.lineEdit_login)
 
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName("label_2")
@@ -160,9 +160,9 @@ class Ui_Logowanie(object):
 
     def logIn(self):
         baza = Baza2()
-        logged, uprawnienia = baza.zaloguj(self.lineEdit_email.text(),self.lineEdit_password.text())
+        logged, uprawnienia = baza.zaloguj(self.lineEdit_login.text(), self.lineEdit_password.text())
 
-        if (self.lineEdit_email.text()!="" or self.lineEdit_password.text() !=""):
+        if (self.lineEdit_login.text()!= "" or self.lineEdit_password.text() != ""):
             if(logged ==1 and uprawnienia==1):
                 from UserMainWindow import Ui_UserMainWindow
                 self.ui1 = Ui_UserMainWindow()

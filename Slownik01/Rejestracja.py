@@ -54,10 +54,10 @@ class Ui_Registration(object):
         self.label_4.setObjectName("label_4")
         self.verticalLayout.addWidget(self.label_4)
 
-        self.lineEdit_confirmPassword = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_confirmPassword.setObjectName("lineEdit_confirmPassword")
-        self.lineEdit_confirmPassword.setStyleSheet("background-color: white;")
-        self.verticalLayout.addWidget(self.lineEdit_confirmPassword)
+        self.lineEdit_login = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_login.setObjectName("lineEdit_confirmPassword")
+        self.lineEdit_login.setStyleSheet("background-color: white;")
+        self.verticalLayout.addWidget(self.lineEdit_login)
 
         # ----stworz-------------------
         self.btn_regist = QtWidgets.QPushButton(self.centralwidget)
@@ -146,9 +146,9 @@ class Ui_Registration(object):
 
     def signUp(self):
         baza = Baza2()
-        if (self.lineEdit_confirmPassword.text() != "" and self.lineEdit_email.text() != ""
+        if (self.lineEdit_login.text() != "" and self.lineEdit_email.text() != ""
                 and self.lineEdit_password.text() != ""):
-            baza.zarejestruj(self.lineEdit_confirmPassword.text(),
+            baza.zarejestruj(self.lineEdit_login.text(),
                              self.lineEdit_password.text(), self.lineEdit_email.text())
             self.goBack()
         else:

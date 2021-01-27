@@ -110,7 +110,6 @@ class Ui_MainWindow(object):
         for i in self.lista:
             self.comboBox.addItem(i)
 
-        #
         self.verticalLayout.addWidget(self.comboBox)
 
         # -----SZUKAJ Z LISTY-----------
