@@ -115,7 +115,7 @@ class Ui_Registration(object):
         self.label_3.setText(_translate("Registration", "Hasło"))
         self.label_4.setText(_translate("Registration", "Wybierz login"))
         self.btn_regist.setText(_translate("Registration", "Stwórz"))
-        self.btn_back.setText(_translate("Registration", "Pwrót"))
+        self.btn_back.setText(_translate("Registration", "Powrót"))
 
     def goBack(self):
         from Logowanie import Ui_Logowanie

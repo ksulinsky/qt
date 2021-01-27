@@ -120,7 +120,7 @@ class Ui_Logowanie(object):
         self.btn_logIn.setText(_translate("Logowanie", "Zaloguj"))
         self.label.setText(_translate("Logowanie", "Login"))
         self.label_2.setText(_translate("Logowanie", "Hasło"))
-        self.btn_back.setText(_translate("Logowanie", "Pwrót"))
+        self.btn_back.setText(_translate("Logowanie", "Powrót"))
 
     def goToRegistration(self):
         self.ui = Ui_Registration()

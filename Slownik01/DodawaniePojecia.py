@@ -85,7 +85,7 @@ class Ui_Dodawanie(object):
         Dodawanie.setWindowTitle(_translate("Dodawanie", "Dodawanie Pojęcia"))
         self.btn_add.setText(_translate("Dodawanie", "Zatwierdź"))
         self.label.setText(_translate("Dodawanie", "Dodaj pojęcie do bazy"))
-        self.btn_back.setText(_translate("Dodawanie", "Pwrót"))
+        self.btn_back.setText(_translate("Dodawanie", "Powrót"))
         self.label_2.setText(_translate("Dodawanie", "Nazwa:"))
         self.label_3.setText(_translate("Dodawanie", "Definicja:"))
 

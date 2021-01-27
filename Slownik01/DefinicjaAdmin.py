@@ -102,7 +102,7 @@ class Ui_ShowDefinitionAdmin(object):
         _translate = QtCore.QCoreApplication.translate
         ShowDefinition.setWindowTitle(_translate("ShowDefinitionAdmin", "Definicja"))
         ShowDefinition.setStyleSheet("background-color: '#FAF2B6';")
-        self.btn_back.setText(_translate("ShowDefinitionAdmin", "Pwrót"))
+        self.btn_back.setText(_translate("ShowDefinitionAdmin", "Powrót"))
         self.btn_delete.setText(_translate("ShowDefinitionAdmin", "Usuń"))
 
 

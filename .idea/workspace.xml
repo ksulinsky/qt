@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a4e46038-b03b-42f2-b14c-310e7cccc2c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Slownik01/Akceptacja.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/Akceptacja.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Slownik01/Definicja.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/Definicja.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Slownik01/DefinicjaAdmin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/DefinicjaAdmin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Slownik01/DodawaniePojecia.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/DodawaniePojecia.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Slownik01/Logowanie.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/Logowanie.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Slownik01/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/MainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Slownik01/Rejestracja.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slownik01/Rejestracja.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,11 +56,14 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pauli\OneDrive\Pulpit\UNI\qttest\qt" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\pauli\OneDrive\Pulpit\UNI\qttest\qt\Slownik01" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Rejestracja">
+  <component name="RunManager" selected="Python.UserMainWindow">
     <configuration name="AdminMainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="qt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -170,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Rejestracja" />
-        <item itemvalue="Python.Logowanie" />
-        <item itemvalue="Python.MainWindow" />
-        <item itemvalue="Python.AdminMainWindow" />
         <item itemvalue="Python.UserMainWindow" />
+        <item itemvalue="Python.Rejestracja" />
+        <item itemvalue="Python.MainWindow" />
+        <item itemvalue="Python.Logowanie" />
+        <item itemvalue="Python.AdminMainWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +210,7 @@
       <workItem from="1611397163722" duration="99000" />
       <workItem from="1611409287891" duration="2693000" />
       <workItem from="1611741015611" duration="645000" />
-      <workItem from="1611742132552" duration="12452000" />
+      <workItem from="1611742132552" duration="13782000" />
     </task>
     <servers />
   </component>
@@ -237,25 +243,25 @@
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611411981169" />
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1610485866846" />
-    <state width="1323" height="88" key="GridCell.Tab.0.bottom" timestamp="1611762246710">
+    <state width="1323" height="88" key="GridCell.Tab.0.bottom" timestamp="1611763368975">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="88" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611762246710" />
+    <state width="1323" height="88" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611763368975" />
     <state width="1637" height="253" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-166.1680.1010@1366.-166.1680.1010" timestamp="1610830282929" />
-    <state width="1323" height="88" key="GridCell.Tab.0.center" timestamp="1611762246710">
+    <state width="1323" height="88" key="GridCell.Tab.0.center" timestamp="1611763368974">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="88" key="GridCell.Tab.0.center/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611762246710" />
+    <state width="1323" height="88" key="GridCell.Tab.0.center/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611763368974" />
     <state width="1637" height="253" key="GridCell.Tab.0.center/0.0.1366.728/1366.-166.1680.1010@1366.-166.1680.1010" timestamp="1610830282929" />
-    <state width="1323" height="88" key="GridCell.Tab.0.left" timestamp="1611762246710">
+    <state width="1323" height="88" key="GridCell.Tab.0.left" timestamp="1611763368974">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="88" key="GridCell.Tab.0.left/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611762246710" />
+    <state width="1323" height="88" key="GridCell.Tab.0.left/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611763368974" />
     <state width="1637" height="253" key="GridCell.Tab.0.left/0.0.1366.728/1366.-166.1680.1010@1366.-166.1680.1010" timestamp="1610830282929" />
-    <state width="1323" height="88" key="GridCell.Tab.0.right" timestamp="1611762246710">
+    <state width="1323" height="88" key="GridCell.Tab.0.right" timestamp="1611763368975">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="88" key="GridCell.Tab.0.right/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611762246710" />
+    <state width="1323" height="88" key="GridCell.Tab.0.right/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611763368975" />
     <state width="1637" height="253" key="GridCell.Tab.0.right/0.0.1366.728/1366.-166.1680.1010@1366.-166.1680.1010" timestamp="1610830282929" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1611411983993">
       <screen x="0" y="0" width="1366" height="728" />
@@ -279,13 +285,13 @@
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.-166.1680.1010@0.0.1366.728" timestamp="1611742140986" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/qt$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1611760877412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
-    <SUITE FILE_PATH="coverage/qt$UserMainWindow.coverage" NAME="UserMainWindow Coverage Results" MODIFIED="1611747312221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
+    <SUITE FILE_PATH="coverage/qt$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1611762995716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
+    <SUITE FILE_PATH="coverage/qt$UserMainWindow.coverage" NAME="UserMainWindow Coverage Results" MODIFIED="1611763368962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$Definicja.coverage" NAME="Definicja Coverage Results" MODIFIED="1611229772694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$AdminMainWindow.coverage" NAME="AdminMainWindow Coverage Results" MODIFIED="1611747442926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$baza2.coverage" NAME="baza2 Coverage Results" MODIFIED="1611053410787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$Logowanie.coverage" NAME="Logowanie Coverage Results" MODIFIED="1611761940237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
-    <SUITE FILE_PATH="coverage/qt$Rejestracja.coverage" NAME="Rejestracja Coverage Results" MODIFIED="1611762246700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
+    <SUITE FILE_PATH="coverage/qt$Rejestracja.coverage" NAME="Rejestracja Coverage Results" MODIFIED="1611763317444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$MessageBoxValues.coverage" NAME="MessageBoxValues Coverage Results" MODIFIED="1610283518676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/18_11" />
     <SUITE FILE_PATH="coverage/qt$main.coverage" NAME="main Coverage Results" MODIFIED="1610881347499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />
     <SUITE FILE_PATH="coverage/qt$Akceptacja.coverage" NAME="Akceptacja Coverage Results" MODIFIED="1611357545012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Slownik01" />

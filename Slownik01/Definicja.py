@@ -86,7 +86,7 @@ class Ui_ShowDefinition(object):
         _translate = QtCore.QCoreApplication.translate
         ShowDefinition.setWindowTitle(_translate("ShowDefinition", "Definicja"))
         ShowDefinition.setStyleSheet("background-color: '#FAF2B6';")
-        self.btn_back.setText(_translate("ShowDefinition", "Pwrót"))
+        self.btn_back.setText(_translate("ShowDefinition", "Powrót"))
 
     def goBack(self):
         if(self.click==1):

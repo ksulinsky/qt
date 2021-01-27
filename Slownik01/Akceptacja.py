@@ -124,7 +124,7 @@ class Ui_Akceptacja(object):
         _translate = QtCore.QCoreApplication.translate
         Akceptacja.setWindowTitle(_translate("Akceptacja", "Akceptacja pojęcia"))
         Akceptacja.setStyleSheet("background-color: '#FFF9C4';")
-        self.btn_back.setText(_translate("Akceptacja", "Pwrót"))
+        self.btn_back.setText(_translate("Akceptacja", "Powrót"))
         self.btn_accept.setText(_translate("Akceptacja", "Akceptuj"))
         self.btn_delete.setText(_translate("Akceptacja", "Usuń"))
 
