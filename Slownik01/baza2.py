@@ -7,7 +7,7 @@ class Baza2:
                 host="localhost",
                 user="root",
                 passwd="",
-                database="slownik"
+                database="slownik2"
             )
             self.cur=self.db.cursor(dictionary=True)
         def get_tresc(self,nazwa):
